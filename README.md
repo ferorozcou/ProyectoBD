@@ -13,4 +13,5 @@ Cada restaurante cuenta con varios niveles que van aumentando de dificultad prog
 
 **Modelo Entidad-Relación del proyecto:**
 
-![ModeloEntidadRelacion](https://github.com/user-attachments/assets/e4d8042e-d3c3-473b-93b8-56bc0741833f)
+![ModeloEntidadRelacion](https://github.com/user-attachments/assets/7525a12a-b58b-4dff-8005-76c730b6c465)
+
