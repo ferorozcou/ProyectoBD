@@ -11,4 +11,6 @@ Al iniciar el juego, el jugador tiene la  posibilidad de escoger entre tres rest
 
 Cada restaurante cuenta con varios niveles que van aumentando de dificultad progresivamente. Cada ingrediente correcto por pedido suma cierta cantidad de puntos y, si al terminarse el tiempo límite el jugador ha logrado alcanzar el mínimo de puntos establecido, podrá avanzar al siguiente nivel. A medida que aumentas de nivel, desbloqueas ingredientes, productos y negocios.  
 
+**Modelo Entidad-Relación del proyecto**
+
 ![ModeloEntidadRelacion](https://github.com/user-attachments/assets/e4d8042e-d3c3-473b-93b8-56bc0741833f)
