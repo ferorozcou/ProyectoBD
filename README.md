@@ -17,30 +17,30 @@ Cada restaurante cuenta con varios niveles que van aumentando de dificultad prog
 
 Descripción del diagrama:
 Dentro del diagrama tenemos las siguientes entidades:
-- Jugador
-Atributos: Id, Nombre, Apariencia
-Relacionado con: Nivel, Restaurante
-- Nivel
-Atributos: Id, Nº pedidos, Tiempo, Puntos requeridos
-Relacionado con: Jugador, Restaurante
-- Restaurante
-Atributos: Nombre, Tipo, Recompensa, Apariencia
-Relacionado con:Jugador, Ingrediente
-- Ingrediente
-Atributos: Id, Tipo, Nombre, Imagen, Restaurante
-Relacionado con: Pedido
-- Pedido
-Atributos: Id
-Relacionado con:Ingrediente, Bebida, Tipo Pedido
-- Bebida
-Atributos: Nombre, Apariencia
-Relacionado con: Pedido, Cliente 
-- Cliente
-Atributos: Animal, Frase fácil, Frase difícil, Apariencia
-Relacionado con: Bebida
--Tipo Pedido
-Atributos: Dificultad, Nº elementos, P. Perfecto, P. 1 error, P. 2 errores, P. 3+ errores
-Relacionado con: Pedido
+- Jugador (
+Atributos: Id, Nombre, Apariencia.
+Relacionado con: Nivel, Restaurante)
+- Nivel (
+Atributos: Id, Nº pedidos, Tiempo, Puntos requeridos.
+Relacionado con: Jugador, Restaurante)
+- Restaurante (
+Atributos: Nombre, Tipo, Recompensa, Apariencia.
+Relacionado con:Jugador, Ingrediente)
+- Ingrediente (
+Atributos: Id, Tipo, Nombre, Imagen, Restaurante.
+Relacionado con: Pedido)
+- Pedido (
+Atributos: Id.
+Relacionado con:Ingrediente, Bebida, Tipo Pedido)
+- Bebida (
+Atributos: Nombre, Apariencia.
+Relacionado con: Pedido, Cliente)
+- Cliente (
+Atributos: Animal, Frase fácil, Frase difícil, Apariencia.
+Relacionado con: Bebida)
+-Tipo Pedido (
+Atributos: Dificultad, Nº elementos, P. Perfecto, P. 1 error, P. 2 errores, P. 3+ errores.
+Relacionado con: Pedido)
 
 El jugador trabaja en un restaurante y juega en diferentes niveles, los cuales incluyen distintos restaurantes. Cada restaurante tiene ingredientes específicos. Los pedidos están compuestos por ingredientes y bebidas. Los clientes ordenan bebidas específicas y están caracterizados por frases que varían según la dificultad del nivel y apariencia. Los pedidos pertenecen a un tipo de pedido que define su dificultad y criterios de evaluación (perfecto, con errores, etc.).
 
