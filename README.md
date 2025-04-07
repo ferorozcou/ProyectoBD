@@ -38,7 +38,7 @@ Relacionado con: Pedido, Cliente)
 - Cliente (
 Atributos: Animal, Frase fácil, Frase difícil, Apariencia.
 Relacionado con: Bebida)
--Tipo Pedido (
+- TipoPedido (
 Atributos: Dificultad, Nº elementos, P. Perfecto, P. 1 error, P. 2 errores, P. 3+ errores.
 Relacionado con: Pedido)
 
