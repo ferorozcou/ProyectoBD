@@ -16,6 +16,7 @@ Cada restaurante cuenta con varios niveles que van aumentando de dificultad prog
 ![ModeloEntidadRelacion](https://github.com/user-attachments/assets/7525a12a-b58b-4dff-8005-76c730b6c465)
 
 **Descripción del diagrama:**
+
 Dentro del diagrama tenemos las siguientes entidades:
 - Jugador (
 Atributos: Id, Nombre, Apariencia.
