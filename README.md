@@ -15,7 +15,7 @@ Cada restaurante cuenta con varios niveles que van aumentando de dificultad prog
 
 ![ModeloEntidadRelacion](https://github.com/user-attachments/assets/7525a12a-b58b-4dff-8005-76c730b6c465)
 
-Descripción del diagrama:
+**Descripción del diagrama:**
 Dentro del diagrama tenemos las siguientes entidades:
 - Jugador (
 Atributos: Id, Nombre, Apariencia.
@@ -42,5 +42,14 @@ Relacionado con: Bebida)
 Atributos: Dificultad, Nº elementos, P. Perfecto, P. 1 error, P. 2 errores, P. 3+ errores.
 Relacionado con: Pedido)
 
-La relación solo puede jugar un nivel y un restaurante a la vez y en un nivel y un restaurante solo puede jugar un único jugador, por lo que ambas relaciones son 1 a 1. Cada restaurante tiene una variedad ingredientes específicos, por lo que la relación es 1 a muchos (un restaurante tiene muchos ingredientes pero cada ingrediente solo correspone a un restaurante). Los pedidos están compuestos por varios ingredientes y bebidas. Los clientes ordenan bebidas específicas y están caracterizados por frases que varían según la dificultad del nivel y apariencia. Los pedidos pertenecen a un tipo de pedido que define su dificultad y criterios de evaluación (perfecto, con errores, etc.).
+Encontramos las relaciones:
+- Jugador-Nivel (1 a 1): Cada jugador puede jugar un único nivel a la vez y cada nivel solo incluye un jugador.
+- Jugador-Restaurante (1 a 1):  Cada jugador puede jugar un único restaurante al mismo tiempo y cada restaurante solo puede contener un jugador.
+- Restaurante-Ingrediente (1 a n):  Cada restaurante tiene varios ingredientes, pero cada ingrediente corresponde a un único restaurante.
+- Ingrediente-Pedido (n a m): Cada pedido contiene varios ingredientes y cada ingrediente puede encontrarse en varios pedidos.
+- Pedido-Bebida (1 a n): Cada bebida puede ser encontrada en varios pedidos, pero cada pedido incluye una única bebida.
+- Bebida-Cliente (1 a 1): Cada cliente pide una bebida específica y cada bebida puede ser pedida por un solo cliente.
+- Pedido-TipoPedido (1 a n): Cada pedido puede ser de un único tipo pero cada tipo puede encontrarse en más de un pedido.
+- Nivel-TipoPedido (n a m): Cada nivel incluye varios tipos de pedido y cada tipo de pedido puede encontrarse en más de un nivel.
+
 
