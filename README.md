@@ -19,9 +19,6 @@ Cada restaurante cuenta con varios niveles que van aumentando de dificultad prog
 **Descripción del diagrama:**
 
 Dentro del diagrama tenemos las siguientes entidades:
-- Jugador (
-Atributos: Id, Nombre, Apariencia.
-Relacionado con: Nivel, Restaurante)
 - Nivel (
 Atributos: Id, Nº pedidos, Tiempo, Puntos requeridos.
 Relacionado con: Jugador, Restaurante)
@@ -45,8 +42,6 @@ Atributos: Dificultad, Nº elementos, P. Perfecto, P. 1 error, P. 2 errores, P. 
 Relacionado con: Pedido)
 
 Encontramos las relaciones:
-- Jugador-Nivel (1 a 1): Cada jugador puede jugar un único nivel a la vez y cada nivel solo incluye un jugador.
-- Jugador-Restaurante (1 a 1):  Cada jugador puede jugar un único restaurante al mismo tiempo y cada restaurante solo puede contener un jugador.
 - Restaurante-Ingrediente (1 a n):  Cada restaurante tiene varios ingredientes, pero cada ingrediente corresponde a un único restaurante.
 - Ingrediente-Pedido (n a m): Cada pedido contiene varios ingredientes y cada ingrediente puede encontrarse en varios pedidos.
 - Pedido-Bebida (1 a n): Cada bebida puede ser encontrada en varios pedidos, pero cada pedido incluye una única bebida.
