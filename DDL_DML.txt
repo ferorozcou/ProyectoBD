@@ -1,4 +1,5 @@
 DDL:
+
 CREATE TABLE "Bebidas" (
 	"Nombre"	TEXT NOT NULL UNIQUE,
 	"Apariencia"	TEXT,
