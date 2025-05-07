@@ -1,6 +1,6 @@
 DDL:
 
-CREATE TABLE "Bebidas" (
+CREATE TABLE IF NOT EXISTS "Bebidas" (
 	"Nombre"	TEXT NOT NULL UNIQUE,
 	"Apariencia"	TEXT,
 	"Cliente"	TEXT,
@@ -8,7 +8,7 @@ CREATE TABLE "Bebidas" (
 	FOREIGN KEY("Cliente") REFERENCES "Clientes"("Animal")
 );
 
-CREATE TABLE "Clientes" (
+CREATE TABLE IF NOT EXISTS "Clientes" (
 	"Animal"	TEXT NOT NULL UNIQUE,
 	"FraseFacil"	TEXT,
 	"FraseDificil"	TEXT,
@@ -16,7 +16,7 @@ CREATE TABLE "Clientes" (
 	PRIMARY KEY("Animal")
 );
 
-CREATE TABLE "Ingredientes" (
+CREATE TABLE IF NOT EXISTS "Ingredientes" (
 	"Id"	INTEGER NOT NULL UNIQUE,
 	"Nombre"	TEXT,
 	"Tipo"	TEXT,
@@ -26,7 +26,7 @@ CREATE TABLE "Ingredientes" (
 	FOREIGN KEY("Restaurante") REFERENCES "Restaurantes"
 );
 
-CREATE TABLE "Niveles" (
+CREATE TABLE IF NOT EXISTS "Niveles" (
 	"Id"	INTEGER NOT NULL UNIQUE,
 	"NumeroPedidos"	INTEGER,
 	"PuntosRequeridos"	INTEGER,
@@ -34,7 +34,7 @@ CREATE TABLE "Niveles" (
 	PRIMARY KEY("Id")
 );
 
-CREATE TABLE "Pedidos" (
+CREATE TABLE IF NOT EXISTS "Pedidos" (
 	"Id"	INTEGER NOT NULL UNIQUE,
 	"Tipo"	TEXT,
 	"Bebida"	TEXT,
@@ -43,7 +43,7 @@ CREATE TABLE "Pedidos" (
 	FOREIGN KEY("Tipo") REFERENCES "TiposPedidos"("Dificultad")
 );
 
-CREATE TABLE "PedidosIngredientes" (
+CREATE TABLE IF NOT EXISTS "PedidosIngredientes" (
 	"IdPedido"	INTEGER NOT NULL,
 	"IdIngrediente"	INTEGER NOT NULL,
 	PRIMARY KEY("IdPedido","IdIngrediente"),
@@ -51,7 +51,7 @@ CREATE TABLE "PedidosIngredientes" (
 	FOREIGN KEY("IdPedido") REFERENCES "Pedidos"
 );
 
-CREATE TABLE "Restaurantes" (
+CREATE TABLE IF NOT EXISTS "Restaurantes" (
 	"Tipo"	TEXT NOT NULL UNIQUE,
 	"Recompensa"	TEXT,
 	"Apariencia"	TEXT,
@@ -59,7 +59,7 @@ CREATE TABLE "Restaurantes" (
 	PRIMARY KEY("Tipo")
 );
 
-CREATE TABLE "TiposPedidos" (
+CREATE TABLE IF NOT EXISTS "TiposPedidos" (
 	"Dificultad"	TEXT NOT NULL UNIQUE,
 	"NumeroElementos"	INTEGER,
 	"PuntosPerfecto"	INTEGER,
@@ -69,7 +69,7 @@ CREATE TABLE "TiposPedidos" (
 	PRIMARY KEY("Dificultad")
 );
 
-CREATE TABLE "TiposPedidosNiveles" (
+CREATE TABLE IF NOT EXISTS "TiposPedidosNiveles" (
 	"IdNivel"	INTEGER NOT NULL,
 	"TipoPedido"	TEXT NOT NULL,
 	"Cantidad"	INTEGER,
