@@ -94,6 +94,11 @@ INSERT INTO Clientes (Animal, FraseFacil, FraseDificil, Apariencia) VALUES
     ('Conejo', 'Me pones un zumo, tío', 'Ponme lo de siempre', NULL),
     ('Koala', 'Ice… Tea', 'Zzzz', NULL);
 
+INSERT INTO Restaurantes (Tipo, Recompensa, Apariencia, Nombre) VALUES
+('Español', 'Clavel', NULL, 'Tio''s Españoleria'),
+('Venezolano', 'Cuatro', NULL, 'Marico''s Venezoleria'),
+('Mexicano', 'Sombrero', NULL, 'Wey''s mexicaneria');
+
 INSERT INTO Ingredientes (Id, Nombre, Tipo, Restaurante, Imagen) VALUES
     (1, 'Tortilla', 'Base', 'Español', NULL),
     (2, 'Cebolla', 'Relleno', 'Español', NULL),
@@ -128,11 +133,6 @@ INSERT INTO Niveles (Id, NumeroPedidos, PuntosRequeridos, TiempoSegundos) VALUES
 (1, 5, 500, 120),
 (2, 7, 700, 120),
 (3, 10, 1000, 130);
-
-INSERT INTO Restaurantes (Tipo, Recompensa, Apariencia, Nombre) VALUES
-('Español', 'Clavel', NULL, 'Tio''s Españoleria'),
-('Venezolano', 'Cuatro', NULL, 'Marico''s Venezoleria'),
-('Mexicano', 'Sombrero', NULL, 'Wey''s mexicaneria');
 
 INSERT INTO TiposPedidos (Dificultad, NumeroElementos, PuntosPerfecto, Puntos1Error, Puntos2Errores, Puntos3Errores) VALUES
 ('Fácil', 1, 120, 100, 50, 0),
