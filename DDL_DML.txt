@@ -141,10 +141,10 @@ INSERT INTO TiposPedidos (Dificultad, NumeroElementos, PuntosPerfecto, Puntos1Er
 
 INSERT INTO TiposPedidosNiveles (IdNivel, TipoPedido, Cantidad) VALUES
 (1, 'Fácil', 3),
-(2, 'Medio', 2),
+(1, 'Medio', 2),
+(2, 'Fácil', 2),
+(2, 'Medio', 4),
+(2, 'Difícil', 1),
 (3, 'Fácil', 2),
-(4, 'Medio', 4),
-(5, 'Difícil', 1),
-(6, 'Fácil', 2),
-(7, 'Medio', 5),
-(8, 'Difícil', 3);
+(3, 'Medio', 5),
+(3, 'Difícil', 3);
