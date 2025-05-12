@@ -584,6 +584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 874352733}
+  - component: {fileID: 874352734}
   m_Layer: 0
   m_Name: MexicaneriaManager
   m_TagString: Untagged
@@ -606,6 +607,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &874352734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874352732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbee5ed5efbbaab44b4113bbe36f1d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jefe: {fileID: 455418938}
+  bocadillo: {fileID: 560383829}
+  textoInstrucciones: {fileID: 6970914}
 --- !u!1 &963832501
 GameObject:
   m_ObjectHideFlags: 0
