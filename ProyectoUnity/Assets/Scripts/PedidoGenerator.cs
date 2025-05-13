@@ -7,25 +7,17 @@ public class PedidoGenerator : MonoBehaviour
 
     void Start()
     {
-        // Asegurar conexión y datos
-        dbManager = FindObjectOfType<DBManager>();
-        if (dbManager == null)
-        {
-            Debug.LogError("No se encontró el DBManager en la escena.");
-            return;
-        }
-
-        GenerarPedido();
+        GenerarPedido(1, 2);
     }
 
-    void GenerarPedido()
+    public string[] GenerarPedido(int dif, int rest)
     {
         // Selección aleatoria de restaurante y dificultad
-        string[] restaurantes = { "Español", "Venezolano", "Mexicano" };
+        string[] restaurantes = { "Venezolano", "Mexicano", "Español" };
         string[] dificultades = { "Fácil", "Medio", "Difícil" };
 
-        int restIndex = Random.Range(0, restaurantes.Length);
-        int difIndex = Random.Range(0, dificultades.Length);
+        int restIndex = rest;
+        int difIndex = dif;
 
         string restaurante = restaurantes[restIndex];
         string dificultad = dificultades[difIndex];
@@ -37,8 +29,8 @@ public class PedidoGenerator : MonoBehaviour
         List<DBManager.Ingrediente> bases = ingredientes.FindAll(i => i.Tipo == "Base");
         List<DBManager.Ingrediente> rellenos = ingredientes.FindAll(i => i.Tipo == "Relleno");
         List<DBManager.Ingrediente> extras = ingredientes.FindAll(i => i.Tipo != "Base" && i.Tipo != "Relleno");
-
-        Debug.Log($"Pedido del restaurante {restaurante} con {numElementos} elementos. Dificultad: {dificultad}");
+        string[] Pedido = new string[numElementos + 1];
+        Pedido[0] = $"Pedido del restaurante {restaurante} con {numElementos} elementos. Dificultad: {dificultad}";
 
         for (int i = 0; i < numElementos; i++)
         {
@@ -46,7 +38,8 @@ public class PedidoGenerator : MonoBehaviour
             string rellenoNombre = rellenos[Random.Range(0, rellenos.Count)].Nombre;
             string extraNombre = extras[Random.Range(0, extras.Count)].Nombre;
 
-            Debug.Log($"Base: {baseNombre}; Relleno: {rellenoNombre}; Topping/Extra: {extraNombre}");
+            Pedido[i+1]=$"Base: {baseNombre}; Relleno: {rellenoNombre}; Topping/Extra: {extraNombre}";
         }
+        return Pedido;
     }
 }

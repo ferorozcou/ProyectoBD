@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; 
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MexicaneriaManager : MonoBehaviour
 {
@@ -74,13 +75,12 @@ public class MexicaneriaManager : MonoBehaviour
     //Funcion para ir cambiando el texto.
     void ActualizarTexto()
     {
-        textoInstrucciones.text = instrucciones[indiceActual];
+        string v = instrucciones[indiceActual];
+        textoInstrucciones.text = v;
     }
 
     void IniciarJuego()
     {
-        jefe.SetActive(false);
-        bocadillo.SetActive(false);
-        textoInstrucciones.gameObject.SetActive(false);
+        SceneManager.LoadScene(5);
     }
 }

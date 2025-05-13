@@ -12,14 +12,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/Menu.unity
     guid: 3c4bb255857d29249b77cabe0578096d
   - enabled: 1
-    path: Assets/Scenes/Niveles/Venezolaneria.unity
+    path: Assets/Scenes/Niveles/VenezolaneriaInstrucciones.unity
     guid: 7aa3bc5d15135ac40a9ca164268b90a2
   - enabled: 1
-    path: Assets/Scenes/Niveles/Mexicaneria.unity
+    path: Assets/Scenes/Niveles/MexicaneriaInstrucciones.unity
     guid: 0cc6e5381f8cccd4fbbb712ddb43e125
   - enabled: 1
-    path: "Assets/Scenes/Niveles/Espa\xF1oleria.unity"
+    path: "Assets/Scenes/Niveles/Espa\xF1oleriaInstrucciones.unity"
     guid: 21b6709d6016fd34598440de64a3011a
+  - enabled: 1
+    path: Assets/Scenes/Niveles/VenezolaneriaClientes.unity
+    guid: dc29fbca5729e1841af1158b81790bb0
+  - enabled: 1
+    path: Assets/Scenes/Niveles/MexicaneriaClientes.unity
+    guid: 016cc5f9e4d9e014cba403cc2ac632fb
+  - enabled: 1
+    path: "Assets/Scenes/Niveles/Espa\xF1oleriaClientes.unity"
+    guid: 83004a5b31f5eda40aefb5a21fd968c5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
