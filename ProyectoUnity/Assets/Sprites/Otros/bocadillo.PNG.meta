@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bocadillo_0: 7688808140211946293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
