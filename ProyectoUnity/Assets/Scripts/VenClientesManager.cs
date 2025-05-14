@@ -3,10 +3,9 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
-
-public class EspaClientesManager : MonoBehaviour
+public class VenClientesManager : MonoBehaviour
 {
-    public GameObject  capibara, conejo, gato, koala, pato;
+    public GameObject capibara, conejo, gato, koala, pato;
     public GameObject[] animales;
     public PedidoGenerator GeneradorPedidos;
     public TextMeshProUGUI textoPedido;
@@ -15,11 +14,11 @@ public class EspaClientesManager : MonoBehaviour
     int dif = 1;
     void EscribirPedido()
     {
-        string[] pedido = GeneradorPedidos.GenerarPedido(dif, 2);
+        string[] pedido = GeneradorPedidos.GenerarPedido(dif, 0);
         string v = pedido[indice];
         textoPedido.text = v;
     }
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,7 +63,6 @@ public class EspaClientesManager : MonoBehaviour
     }
     void Cocinar()
     {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(9);
     }
-
 }

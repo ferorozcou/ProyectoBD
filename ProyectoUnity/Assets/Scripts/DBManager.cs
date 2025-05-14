@@ -6,6 +6,8 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 
+
+[DefaultExecutionOrder(-100)]
 public class DBManager : MonoBehaviour
 {
     private string dbBaseUri = "URI=file:";
@@ -22,42 +24,10 @@ public class DBManager : MonoBehaviour
         createTables();
         populateDB();
 
-        GenerarPedidoAleatorio();
 
-        dbConnection.Close();
+ 
     }
 
-    void GenerarPedidoAleatorio()
-    {
-        // Selección aleatoria de restaurante
-        string[] restaurantes = { "Español", "Venezolano", "Mexicano" };
-        int indexRest = UnityEngine.Random.Range(0, 3);
-        string restaurante = restaurantes[indexRest];
-
-        // Selección aleatoria de dificultad
-        string[] dificultades = { "Fácil", "Medio", "Difícil" };
-        int indexDif = UnityEngine.Random.Range(0, 3);
-        string dificultad = dificultades[indexDif];
-
-        int cantidadElementos = GetNumeroElementosPorDificultad(dificultad);
-        List<Ingrediente> ingredientes = GetIngredientesPorRestaurante(restaurante);
-
-        // Agrupar ingredientes por tipo
-        List<Ingrediente> bases = ingredientes.FindAll(i => i.Tipo == "Base");
-        List<Ingrediente> rellenos = ingredientes.FindAll(i => i.Tipo == "Relleno");
-        List<Ingrediente> extras = ingredientes.FindAll(i => i.Tipo != "Base" && i.Tipo != "Relleno"); // "Extra" o "Toppings"
-
-        Debug.Log($"Pedido del restaurante {restaurante} con {cantidadElementos} elementos. Dificultad: {dificultad}");
-
-        for (int i = 0; i < cantidadElementos; i++)
-        {
-            string baseElegida = bases[UnityEngine.Random.Range(0, bases.Count)].Nombre;
-            string rellenoElegido = rellenos[UnityEngine.Random.Range(0, rellenos.Count)].Nombre;
-            string extraElegido = extras[UnityEngine.Random.Range(0, extras.Count)].Nombre;
-
-            Debug.Log($"Elemento {i + 1}: Base: {baseElegida}; Relleno: {rellenoElegido}; Topping/Extra: {extraElegido}");
-        }
-    }
 
     public int GetNumeroElementosPorDificultad(string dificultad)
     {
@@ -128,5 +98,13 @@ public class DBManager : MonoBehaviour
     {
         public string Nombre;
         public string Tipo;
+    }
+    void OnApplicationQuit()
+    {
+        if (dbConnection != null)
+        {
+            dbConnection.Close();
+            Debug.Log("Conexión a la base de datos cerrada.");
+        }
     }
 }
