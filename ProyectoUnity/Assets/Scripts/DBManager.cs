@@ -70,7 +70,7 @@ public class DBManager : MonoBehaviour
                      dif == 1 ? "FraseDificil" : null;
 
         if (columna == null)
-            return "Dificultad no vï¿½lida";
+            return "Dificultad no válida";
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $"SELECT {columna} FROM Clientes WHERE LOWER(Animal) = LOWER(@cliente)";
@@ -96,7 +96,7 @@ public class DBManager : MonoBehaviour
             command.CommandText = "INSERT INTO Pedidos (Tipo, Bebida, Restaurante, Nivel) " +
                                   "VALUES (@tipo, @bebida, @restaurante, @nivel);";
 
-            // Parï¿½metros
+            // Parámetros
 
             var paramTipo = command.CreateParameter();
             paramTipo.ParameterName = "@tipo";
@@ -266,7 +266,7 @@ public class DBManager : MonoBehaviour
         if (dbConnection != null)
         {
             dbConnection.Close();
-            Debug.Log("Conexiï¿½n a la base de datos cerrada.");
+            Debug.Log("Conexión a la base de datos cerrada.");
         }
     }
 }

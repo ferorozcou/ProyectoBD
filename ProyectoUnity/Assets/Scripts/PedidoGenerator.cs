@@ -15,11 +15,11 @@ public class PedidoGenerator : MonoBehaviour
         if (dbManager == null)
         {
             Debug.LogError("DBManager no asignado en PedidoGenerator.");
-            return new string[] { "Error: no se pudo generar el pedido porque DBManager no estï¿½ disponible." };
+            return new string[] { "Error: no se pudo generar el pedido porque DBManager no está disponible." };
         }
-        // Selecciï¿½n aleatoria de restaurante y dificultad
-        string[] restaurantes = { "Venezolano", "Mexicano", "Espaï¿½ol" };
-        string[] dificultades = { "Fï¿½cil", "Medio", "Difï¿½cil" };
+        // Selección aleatoria de restaurante y dificultad
+        string[] restaurantes = { "Venezolano", "Mexicano", "Español" };
+        string[] dificultades = { "Fácil", "Medio", "Difícil" };
 
         int restIndex = rest;
         int difIndex = dif;
@@ -44,7 +44,7 @@ public class PedidoGenerator : MonoBehaviour
         {
             Pedido[0] = $"Quiero un pedido con {numElementos} sope(s).";
         }
-        if (restaurante == "Espaï¿½ol")
+        if (restaurante == "Español")
         {
             Pedido[0] = $"Quiero un pedido con {numElementos} tortilla(s).";
         }

@@ -195,6 +195,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145732455}
   m_CullTransparentMesh: 1
+--- !u!1 &153690182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153690184}
+  - component: {fileID: 153690183}
+  m_Layer: 0
+  m_Name: ManagerEscena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &153690183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153690182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd0f7eb3acf772418cbf2206543f299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capibara: {fileID: 416373894}
+  conejo: {fileID: 1492740955}
+  gato: {fileID: 2120417809}
+  koala: {fileID: 1516520395}
+  pato: {fileID: 600601734}
+  animales: []
+  GeneradorPedidos: {fileID: 1110833872}
+  textoPedido: {fileID: 174628062}
+  nombreCliente:
+  - capibara
+  - conejo
+  - gato
+  - koala
+  - pato
+  pedido: []
+--- !u!4 &153690184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153690182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5842957, y: -0.7840288, z: -0.38077867}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &174628061
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049852125, y: 0.21627155}
   m_AnchorMax: {x: 0.8872451, y: 0.90000004}
-  m_AnchoredPosition: {x: -447.48004, y: -61.35}
+  m_AnchoredPosition: {x: -447.48004, y: -61.350006}
   m_SizeDelta: {x: -1233.48, y: 238.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &266191224
@@ -677,64 +736,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764183807}
   m_CullTransparentMesh: 1
---- !u!1 &826686386
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 826686388}
-  - component: {fileID: 826686387}
-  m_Layer: 0
-  m_Name: ManagerEscena
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &826686387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826686386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd0f7eb3acf772418cbf2206543f299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capibara: {fileID: 416373894}
-  conejo: {fileID: 1492740955}
-  gato: {fileID: 2120417809}
-  koala: {fileID: 1516520395}
-  pato: {fileID: 600601734}
-  animales: []
-  GeneradorPedidos: {fileID: 1110833872}
-  textoPedido: {fileID: 174628062}
-  nombreCliente:
-  - capibara
-  - conejo
-  - gato
-  - koala
-  - pato
---- !u!4 &826686388
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826686386}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.71514547, y: 0.20281802, z: 61.379818}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1110833871
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,53 +781,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1322341351
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1322341352}
-  - component: {fileID: 1322341353}
-  m_Layer: 0
-  m_Name: VenezolaneriaManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1322341352
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322341351}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.007789, y: -0.116242625, z: -0.41172314}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1322341353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322341351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dfb8e4257cc5d743a210997366a6331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jefe: {fileID: 0}
-  bocadillo: {fileID: 0}
-  textoInstrucciones: {fileID: 0}
 --- !u!1 &1492740955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,7 +1338,6 @@ SceneRoots:
   - {fileID: 2145767111}
   - {fileID: 2072573554}
   - {fileID: 1946123270}
-  - {fileID: 1322341352}
-  - {fileID: 826686388}
   - {fileID: 1110833873}
   - {fileID: 542687349}
+  - {fileID: 153690184}

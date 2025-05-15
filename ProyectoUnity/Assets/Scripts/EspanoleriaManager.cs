@@ -12,33 +12,33 @@ public class EspanoleriaManager : MonoBehaviour
     public TextMeshProUGUI textoInstrucciones; 
 
     private string[] instrucciones = { //Cadena de strings con las instrucciones.
-        "ï¿½Bienvenido a Tio's Espaï¿½oleria! ï¿½Quï¿½ desea pedir?",
-        "ï¿½Cï¿½mo? ï¿½Que no vienes a pedir nada?",
-        "ï¿½Ah, que eres el nuevo! ï¿½Quï¿½ despiste! Encantado de conocerte. Soy Carlino, tu jefe y el dueï¿½o de este imperio de restaurantes. " +
-            "Verï¿½s... te explico un poco cï¿½mo van las cosas por aquï¿½.",
-        "A lo largo del dï¿½a, irï¿½n llegando diversos clientes, cada uno con un pedido distinto. Tu labor es atenderles y preparar dichos pedidos.",
-        "Cada pedido estarï¿½ conformado de una o varias tortillas, asï¿½ como una bebida. Arrastra al plato los ingredientes de cada tortilla y haz click sobre el botï¿½n" +
-            " con el icono del fuego cuando estï¿½ lista.",
-        "Si te equivocas de ingredientes puedes tirarlos a la basura. Sin embargo, recuerda que el desperdicio de alimentos supone una gran pï¿½rdida para el restauranteï¿½, asï¿½ que" +
-            " serï¿½s penalizado y perderï¿½s puntos.",
-        "Cada cliente siempre pedirï¿½ la misma bebida. Asegï¿½rate de recordar cuï¿½l pide cada uno porque al principio te lo dirï¿½n, pero poco a poco dejarï¿½n de hacerlo.",
-        "Una vez tengas todas las tortillas y la bebida preparadas haz click sobre el botï¿½n con el tick para entregarlas.",
-        "Eso es todo. ï¿½Mucha suerte, joven! Presiona enter si estï¿½s listo."
+        "¡Bienvenido a Tio's Españoleria! ¿Qué desea pedir?",
+        "¿Cómo? ¿Que no vienes a pedir nada?",
+        "¡Ah, que eres el nuevo! ¡Qué despiste! Encantado de conocerte. Soy Carlino, tu jefe y el dueño de este imperio de restaurantes. " +
+            "Verás... te explico un poco cómo van las cosas por aquí.",
+        "A lo largo del día, irán llegando diversos clientes, cada uno con un pedido distinto. Tu labor es atenderles y preparar dichos pedidos.",
+        "Cada pedido estará conformado de una o varias tortillas, así como una bebida. Arrastra al plato los ingredientes de cada tortilla y haz click sobre el botón" +
+            " con el icono del fuego cuando esté lista.",
+        "Si te equivocas de ingredientes puedes tirarlos a la basura. Sin embargo, recuerda que el desperdicio de alimentos supone una gran pérdida para el restaurante´, así que" +
+            " serás penalizado y perderás puntos.",
+        "Cada cliente siempre pedirá la misma bebida. Asegúrate de recordar cuál pide cada uno porque al principio te lo dirán, pero poco a poco dejarán de hacerlo.",
+        "Una vez tengas todas las tortillas y la bebida preparadas haz click sobre el botón con el tick para entregarlas.",
+        "Eso es todo. ¡Mucha suerte, joven! Presiona enter si estás listo."
     };
 
-    private int indiceActual = 0; //int para guardar el ï¿½ndice de la lï¿½nea en la que nos encontramos.
+    private int indiceActual = 0; //int para guardar el índice de la línea en la que nos encontramos.
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ActualizarTexto(); //Mostramos la primera lï¿½nea de instrucciones
+        ActualizarTexto(); //Mostramos la primera línea de instrucciones
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //Si presionamos las flechas pasamos de instrucciï¿½n.
+        //Si presionamos las flechas pasamos de instrucción.
         if (Input.GetKeyDown(KeyCode.RightArrow)) 
         {
             SiguienteInstruccion();
@@ -47,7 +47,7 @@ public class EspanoleriaManager : MonoBehaviour
         {
             AnteriorInstruccion();
         }
-        else if (Input.GetKeyDown(KeyCode.Return) && indiceActual == instrucciones.Length - 1) //Si hemos llegado a la ï¿½ltima lï¿½nea y presionamos Enter inicia el juego.
+        else if (Input.GetKeyDown(KeyCode.Return) && indiceActual == instrucciones.Length - 1) //Si hemos llegado a la última línea y presionamos Enter inicia el juego.
         {
             IniciarJuego();
         }

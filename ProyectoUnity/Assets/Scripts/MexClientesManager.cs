@@ -50,7 +50,7 @@ public class MexClientesManager : MonoBehaviour
         {
             AnterioElemento();
         }
-        else if (Input.GetKeyDown(KeyCode.Return)) //Si hemos llegado a la ï¿½ltima lï¿½nea y presionamos Enter inicia el juego.
+        else if (Input.GetKeyDown(KeyCode.Return)) //Si hemos llegado a la última línea y presionamos Enter inicia el juego.
         {
             Cocinar();
         }
