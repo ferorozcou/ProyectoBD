@@ -1,51 +1,51 @@
-INSERT INTO Bebidas (Nombre, Apariencia, Cliente) VALUES
-    ('Agua', 'Pato', NULL),
-    ('Cocacola', 'Capibara', NULL),
-    ('Sprite', 'Gato', NULL),
-    ('Zumo', 'Conejo', NULL),
-    ('Ice Tea', 'Koala', NULL);
+INSERT INTO Clientes (Animal, FraseFacil, FraseDificil) VALUES
+    ('Pato', 'Y una co-quack-cola por favor', 'Quack, Quack, ya lo sabes'),
+    ('Capibara', 'Y un agua por favor', 'Ya te la sabes'),
+    ('Gato', 'Y un Sprite, miau, miau', 'Miau, la de siempre'),
+    ('Conejo', 'Y me pones un zumo, tío', 'Ponme lo de siempre'),
+    ('Koala', 'Y un Ice… Tea', 'Zzzz');
 
-INSERT INTO Clientes (Animal, FraseFacil, FraseDificil, Apariencia) VALUES
-    ('Pato', 'Una co-quack-cola por favor', 'Quack, Quack, ya lo sabes', NULL),
-    ('Capibara', 'Un agua por favor', 'Ya te la sabes', NULL),
-    ('Gato', 'Un Sprite, miau, miau', 'Miau, la de siempre', NULL),
-    ('Conejo', 'Me pones un zumo, tío', 'Ponme lo de siempre', NULL),
-    ('Koala', 'Ice… Tea', 'Zzzz', NULL);
+INSERT INTO Bebidas (Nombre, Cliente) VALUES
+    ('Agua', 'Pato'),
+    ('Cocacola', 'Capibara'),
+    ('Sprite', 'Gato'),
+    ('Zumo', 'Conejo'),
+    ('Ice Tea', 'Koala');
 
-INSERT INTO Restaurantes (Tipo, Recompensa, Apariencia, Nombre) VALUES
-('Español', 'Clavel', NULL, 'Tio''s Españoleria'),
-('Venezolano', 'Cuatro', NULL, 'Marico''s Venezoleria'),
-('Mexicano', 'Sombrero', NULL, 'Wey''s mexicaneria');
+INSERT INTO Restaurantes (Tipo, Recompensa, Nombre) VALUES
+('Español', 'Clavel', 'Tios Españoleria'),
+('Venezolano', 'Cuatro', 'Maricos Venezoleria'),
+('Mexicano', 'Sombrero', 'Weys mexicaneria');
 
-INSERT INTO Ingredientes (Id, Nombre, Tipo, Restaurante, Imagen) VALUES
-    (1, 'Tortilla', 'Base', 'Español', NULL),
-    (2, 'Cebolla', 'Relleno', 'Español', NULL),
-    (3, 'Chorizo', 'Relleno', 'Español', NULL),
-    (4, 'Espinaca', 'Relleno', 'Español', NULL),
-    (5, 'Bacalao', 'Relleno', 'Español', NULL),
-    (6, 'Jamón', 'Relleno', 'Español', NULL),
-    (7, 'Alioli', 'Extra', 'Español', NULL),
-    (8, 'Mayonesa', 'Extra', 'Español', NULL),
-    (9, 'Ketchup', 'Extra', 'Español', NULL),
-    (10, 'Arepas', 'Base', 'Venezolano', NULL),
-    (11, 'Reina Pepiada', 'Relleno', 'Venezolano', NULL),
-    (12, 'Queso de mano', 'Relleno', 'Venezolano', NULL),
-    (13, 'Pelúa', 'Relleno', 'Venezolano', NULL),
-    (14, 'Dominó', 'Relleno', 'Venezolano', NULL),
-    (15, 'Catira', 'Relleno', 'Venezolano', NULL),
-    (16, 'Perico', 'Relleno', 'Venezolano', NULL),
-    (17, 'Salsa picante', 'Toppings', 'Venezolano', NULL),
-    (18, 'Salsa de ajo', 'Toppings', 'Venezolano', NULL),
-    (19, 'Guasacaca', 'Toppings', 'Venezolano', NULL),
-    (20, 'Sopes', 'Base', 'Mexicano', NULL),
-    (21, 'Frijoles blancos', 'Relleno', 'Mexicano', NULL),
-    (22, 'Frijoles negros', 'Relleno', 'Mexicano', NULL),
-    (23, 'Pollo', 'Toppings', 'Mexicano', NULL),
-    (24, 'Chorizo', 'Toppings', 'Mexicano', NULL),
-    (25, 'Crema', 'Toppings', 'Mexicano', NULL),
-    (26, 'Queso', 'Toppings', 'Mexicano', NULL),
-    (27, 'Lechuga', 'Toppings', 'Mexicano', NULL),
-    (28, 'Aguacate', 'Toppings', 'Mexicano', NULL);
+INSERT INTO Ingredientes (Id, Nombre, Tipo, Restaurante) VALUES
+    (1, 'Tortilla', 'Base', 'Español'),
+    (2, 'Cebolla', 'Relleno', 'Español'),
+    (3, 'Chorizo', 'Relleno', 'Español'),
+    (4, 'Espinaca', 'Relleno', 'Español'),
+    (5, 'Bacalao', 'Relleno', 'Español'),
+    (6, 'Jamón', 'Relleno', 'Español'),
+    (7, 'Alioli', 'Extra', 'Español'),
+    (8, 'Mayonesa', 'Extra', 'Español'),
+    (9, 'Ketchup', 'Extra', 'Español'),
+    (10, 'Arepas', 'Base', 'Venezolano'),
+    (11, 'Reina Pepiada', 'Relleno', 'Venezolano'),
+    (12, 'Queso de mano', 'Relleno', 'Venezolano'),
+    (13, 'Pelúa', 'Relleno', 'Venezolano'),
+    (14, 'Dominó', 'Relleno', 'Venezolano'),
+    (15, 'Catira', 'Relleno', 'Venezolano'),
+    (16, 'Perico', 'Relleno', 'Venezolano'),
+    (17, 'Salsa picante', 'Toppings', 'Venezolano'),
+    (18, 'Salsa de ajo', 'Toppings', 'Venezolano'),
+    (19, 'Guasacaca', 'Toppings', 'Venezolano'),
+    (20, 'Sopes', 'Base', 'Mexicano'),
+    (21, 'Frijoles blancos', 'Relleno', 'Mexicano'),
+    (22, 'Frijoles negros', 'Relleno', 'Mexicano'),
+    (23, 'Pollo', 'Toppings', 'Mexicano'),
+    (24, 'Chorizo', 'Toppings', 'Mexicano'),
+    (25, 'Crema', 'Toppings', 'Mexicano'),
+    (26, 'Queso', 'Toppings', 'Mexicano'),
+    (27, 'Lechuga', 'Toppings', 'Mexicano'),
+    (28, 'Aguacate', 'Toppings', 'Mexicano');
 
 INSERT INTO Niveles (Id, NumeroPedidos, PuntosRequeridos, TiempoSegundos) VALUES
 (1, 5, 500, 120),

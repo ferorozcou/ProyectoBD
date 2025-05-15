@@ -1,8 +1,9 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
+using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MexClientesManager : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class MexClientesManager : MonoBehaviour
     public GameObject[] animales;
     public PedidoGenerator GeneradorPedidos;
     public TextMeshProUGUI textoPedido;
-    public string[] nombreCliente = { "capibara", "conejo", "gato", "koala", "pato" };
+    public string[] nombreCliente = { "Capibara", "Conejo", "Gato", "Koala", "Pato" };
     int indice = -1;
     int dif = 1;
+    public string[] pedido;
+    int nivel = 1;
+
     void EscribirPedido()
     {
-        string[] pedido = GeneradorPedidos.GenerarPedido(dif, 1);
         string v = pedido[indice];
         textoPedido.text = v;
     }
@@ -29,9 +32,10 @@ public class MexClientesManager : MonoBehaviour
         gato.SetActive(false);
         koala.SetActive(false);
         pato.SetActive(false);
-        int clientenum = Random.Range(0, 5);
+        int clientenum = UnityEngine.Random.Range(0, 5);
         animales[clientenum].SetActive(true);
         textoPedido.text = $"Hola soy {nombreCliente[clientenum]}";
+        pedido = GeneradorPedidos.GenerarPedido(dif, 1, nombreCliente[clientenum],nivel);
 
     }
 
@@ -46,7 +50,7 @@ public class MexClientesManager : MonoBehaviour
         {
             AnterioElemento();
         }
-        else if (Input.GetKeyDown(KeyCode.Return)) //Si hemos llegado a la última línea y presionamos Enter inicia el juego.
+        else if (Input.GetKeyDown(KeyCode.Return)) //Si hemos llegado a la ï¿½ltima lï¿½nea y presionamos Enter inicia el juego.
         {
             Cocinar();
         }
@@ -54,13 +58,19 @@ public class MexClientesManager : MonoBehaviour
 
     void SiguienteElemento()
     {
-        indice++;
-        EscribirPedido();
+        if (indice < pedido.Length - 1)
+        {
+            indice++;
+            EscribirPedido();
+        }
     }
     void AnterioElemento()
     {
-        indice--;
-        EscribirPedido();
+        if (indice > 0)
+        {
+            indice--;
+            EscribirPedido();
+        }
     }
     void Cocinar()
     {

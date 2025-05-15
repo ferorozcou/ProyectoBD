@@ -7,22 +7,23 @@ public class PedidoGenerator : MonoBehaviour
         
     void Start()
     {
-        GenerarPedido(1, 2);
+
     }
 
-    public string[] GenerarPedido(int dif, int rest)
+    public string[] GenerarPedido(int dif, int rest, string cliente,int nivel)
     {
         if (dbManager == null)
         {
             Debug.LogError("DBManager no asignado en PedidoGenerator.");
-            return new string[] { "Error: no se pudo generar el pedido porque DBManager no está disponible." };
+            return new string[] { "Error: no se pudo generar el pedido porque DBManager no estï¿½ disponible." };
         }
-        // Selección aleatoria de restaurante y dificultad
-        string[] restaurantes = { "Venezolano", "Mexicano", "Español" };
-        string[] dificultades = { "Fácil", "Medio", "Difícil" };
+        // Selecciï¿½n aleatoria de restaurante y dificultad
+        string[] restaurantes = { "Venezolano", "Mexicano", "Espaï¿½ol" };
+        string[] dificultades = { "Fï¿½cil", "Medio", "Difï¿½cil" };
 
         int restIndex = rest;
         int difIndex = dif;
+        int difFrase = 0;
 
         string restaurante = restaurantes[restIndex];
         string dificultad = dificultades[difIndex];
@@ -34,8 +35,19 @@ public class PedidoGenerator : MonoBehaviour
         List<DBManager.Ingrediente> bases = ingredientes.FindAll(i => i.Tipo == "Base");
         List<DBManager.Ingrediente> rellenos = ingredientes.FindAll(i => i.Tipo == "Relleno");
         List<DBManager.Ingrediente> extras = ingredientes.FindAll(i => i.Tipo != "Base" && i.Tipo != "Relleno");
-        string[] Pedido = new string[numElementos + 2];
-        Pedido[0] = $"Quiero un pedido con {numElementos} elementos.";
+        string[] Pedido = new string[numElementos + 3];
+        if (restaurante == "Venezolano")
+        {
+            Pedido[0] = $"Quiero un pedido con {numElementos} arepa(s).";
+        }
+        if (restaurante == "Mexicano")
+        {
+            Pedido[0] = $"Quiero un pedido con {numElementos} sope(s).";
+        }
+        if (restaurante == "Espaï¿½ol")
+        {
+            Pedido[0] = $"Quiero un pedido con {numElementos} tortilla(s).";
+        }
 
         for (int i = 0; i < numElementos; i++)
         {
@@ -45,7 +57,9 @@ public class PedidoGenerator : MonoBehaviour
 
             Pedido[i+1]=$"Base: {baseNombre};\n Relleno: {rellenoNombre};\n Topping/Extra: {extraNombre}";
         }
-        Pedido[numElementos + 1] = "Presiona Enter para ir a la cocina";
+        Pedido[numElementos + 1] = dbManager.GetFraseCliente(difFrase, cliente);
+        Pedido[numElementos + 2] = "Presiona Enter para ir a la cocina";
+        dbManager.AnadirPedidoDB(dificultad, dbManager.GetBebida(cliente), restaurante, nivel);
         return Pedido;
     }
 }

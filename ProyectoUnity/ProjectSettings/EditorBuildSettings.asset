@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Assets_BAD/Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Menus/Menu.unity
     guid: 3c4bb255857d29249b77cabe0578096d
@@ -30,14 +27,13 @@ EditorBuildSettings:
     path: "Assets/Scenes/Niveles/Espa\xF1oleriaClientes.unity"
     guid: 83004a5b31f5eda40aefb5a21fd968c5
   - enabled: 1
-    path: "Assets/Scenes/Cocinas/Cocina_espa\xF1oleria.unity"
-    guid: 7b891510e656a0648aa964dce7e38dca
+    path: "Assets/Scenes/Nuevas_cocinas/Cocina_espa\xF1oleria.unity"
+    guid: 45e832b14b641264eaa4af8032b2c829
   - enabled: 1
-    path: Assets/Scenes/Cocinas/Cocina_mexicaneria.unity
-    guid: 31563c0091dcf7a438bdfec3c7c38e26
+    path: Assets/Scenes/Nuevas_cocinas/Cocina_mexicaneria.unity
+    guid: 26f2d3845d61b9b49bb4b6534ef9f50c
   - enabled: 1
-    path: Assets/Scenes/Cocinas/Cocina_venezolaneria.unity
-    guid: ad72fd0a932b3d8428af4df44a385667
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    path: Assets/Scenes/Nuevas_cocinas/Cocina_venezolaneria.unity
+    guid: f39cc59315fe0dd44b103bf4f477e2ee
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
