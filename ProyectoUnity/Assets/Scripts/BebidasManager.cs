@@ -58,6 +58,10 @@ public class BebidasManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             Debug.Log("Ingrediente soltado completamente dentro del plato");
             posicionAnterior = rectTransform.position; //Actualizamos la posición válida más reciente
+            GameData.bebidaSeleccionada = gameObject.name; // Asegúrate que el nombre coincide exactamente
+
+            Debug.Log("Bebida seleccionada: " + GameData.bebidaSeleccionada);
+
             if (rectTransform.localScale == escalaInicial)
             {
                 rectTransform.localScale += Vector3.one * 0.9f; // Aumentamos su escala en 0.7

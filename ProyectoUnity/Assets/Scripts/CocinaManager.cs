@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CocinaManager : MonoBehaviour
@@ -10,6 +12,7 @@ public class CocinaManager : MonoBehaviour
 
     public GameObject nuevaImagenUI; // Asigna esta imagen desde el inspector
     public GameObject mensajeErrorUI; // Imagen que se muestra si se supera el límite de clics
+    public GameObject Ayuda, BotonCerrar; // Referencias para mostrar y ocultar la ayuda
 
     public int numeroElementos = 3; // Número máximo de veces que se puede hacer clic
     private int contadorClicks = 0; // Lleva el conteo de cuántas veces se ha hecho clic
@@ -24,6 +27,9 @@ public class CocinaManager : MonoBehaviour
 
     void Start()
     {
+        if (Ayuda != null) Ayuda.SetActive(false);
+        if (BotonCerrar != null) BotonCerrar.SetActive(false);
+
         if (nuevaImagenUI != null)
         {
             posicionOriginal = nuevaImagenUI.transform.localPosition; // Guarda la posición original del plato final
@@ -36,6 +42,15 @@ public class CocinaManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Debug.Log("Se presionó la tecla B");
+            GameData.EvaluarPedidos();
+        }
+    }
+
     public void RegistrarIngrediente(DragManager ingrediente) // Agregamos los ingredientes del plato a la lista
     {
         if (!ingredientes.Contains(ingrediente))
@@ -44,33 +59,68 @@ public class CocinaManager : MonoBehaviour
 
     public void ResetearTodo()
     {
-        // Si ya se ha hecho clic el número máximo de veces, mostramos el mensaje de error y salimos
-        if (contadorClicks >= numeroElementos)
+        bool puedeGuardar = contadorClicks < numeroElementos;
+        int clicks = 0;
+
+        // Si ya se alcanzó el límite, mostramos el mensaje de error, pero igual continuamos con el resto del reseteo
+        if (!puedeGuardar && mensajeErrorUI != null)
         {
-            if (mensajeErrorUI != null)
-            {
-                mensajeErrorUI.SetActive(true); // Muestra el mensaje de error
-                mensajeErrorUI.transform.SetAsLastSibling(); // Lo ponemos al frente de todo
-            }
-            return;
+            mensajeErrorUI.SetActive(true);
+            mensajeErrorUI.transform.SetAsLastSibling(); // Lo ponemos al frente de todo
         }
 
-        // Reseteamos todos los ingredientes a su posición original
+        if (puedeGuardar)
+        {
+            // Guardar los ingredientes actuales en el plato como un string[]
+            List<string> ingredientesDelJugador = new List<string>();
+
+            foreach (DragManager ingrediente in ingredientes)
+            {
+                if (ingrediente.estaDentroDelPlato) // Usamos flag en lugar de cálculo manual
+                {
+                    ingredientesDelJugador.Add(ingrediente.nombreIngrediente);
+                    if (ingredientesDelJugador.Count == 3)
+                        break;
+                }
+            }
+
+            // Si no hay suficientes ingredientes, mostrar advertencia y NO guardar, pero continuar con el resto
+            if (ingredientesDelJugador.Count < 3)
+            {
+                Debug.LogWarning("No hay suficientes ingredientes en el plato.");
+            }
+            else
+            {
+                GameData.ElementosJugador[contadorClicks] = ingredientesDelJugador.ToArray();
+                Debug.Log($"Guardado en ElementosJugador[{contadorClicks}]: {string.Join(", ", ingredientesDelJugador)}");
+                contadorClicks++;
+            }
+
+            if(clicks == 3)
+            {
+                
+                  Debug.Log("Se presionó la tecla Space");
+                  GameData.EvaluarPedidos();
+                
+            }
+
+            clicks++;
+        }
+
+        // SIEMPRE se deben resetear los ingredientes
         foreach (DragManager ingrediente in ingredientes)
         {
             ingrediente.ResetearIngrediente();
         }
 
-        // Si existe la imagen del plato final
+        // SIEMPRE se debe mostrar la imagen animada si existe
         if (nuevaImagenUI != null)
         {
-            nuevaImagenUI.SetActive(true); // Muestra la imagen
-            nuevaImagenUI.transform.SetAsLastSibling(); // Asegura que se muestre por encima de todos los demás elementos
-            nuevaImagenUI.transform.localPosition = posicionOriginal; // Asegura que empiece en su posición original
-            StartCoroutine(AnimarImagen()); // Corutina para que la imagen salga del encuadre
+            nuevaImagenUI.SetActive(true);
+            nuevaImagenUI.transform.SetAsLastSibling();
+            nuevaImagenUI.transform.localPosition = posicionOriginal;
+            StartCoroutine(AnimarImagen());
         }
-
-        contadorClicks++; // Aumentamos el contador de clics
     }
 
     private IEnumerator AnimarImagen()
@@ -79,7 +129,7 @@ public class CocinaManager : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
 
         // Posición final hacia arriba fuera del encuadre del canvas
-        Vector3 posicionFinal = posicionOriginal + new Vector3(0, 500, 0); 
+        Vector3 posicionFinal = posicionOriginal + new Vector3(0, 500, 0);
 
         float duracion = 0.5f;
         float tiempo = 0;
@@ -89,9 +139,9 @@ public class CocinaManager : MonoBehaviour
         // Movimiento hacia arriba durante 0.5 segundos
         while (tiempo < duracion)
         {
-            nuevaImagenUI.transform.localPosition = Vector3.Lerp(inicio, posicionFinal, tiempo / duracion); // Lerp es una función para interpolar entre la posición inicial y final
+            nuevaImagenUI.transform.localPosition = Vector3.Lerp(inicio, posicionFinal, tiempo / duracion);
             tiempo += Time.deltaTime;
-            yield return null; // Pausa la ejecución de la corutina hasta el siguiente frame
+            yield return null;
         }
 
         nuevaImagenUI.transform.localPosition = posicionFinal;
@@ -101,5 +151,24 @@ public class CocinaManager : MonoBehaviour
 
         // Restablece la posición original
         nuevaImagenUI.transform.localPosition = posicionOriginal;
+    }
+
+    public void AyudaActivada()
+    {
+        Ayuda.transform.SetAsLastSibling();
+        Ayuda.SetActive(true);
+        BotonCerrar.transform.SetAsLastSibling();
+        BotonCerrar.SetActive(true);
+    }
+
+    public void AyudaDesactivada()
+    {
+        Ayuda.SetActive(false);
+        BotonCerrar.SetActive(false);
+    }
+
+    public void CambiarABebidas()
+    {
+        SceneManager.LoadScene(10); // Puedes cambiar a 8 si usas la escena antigua
     }
 }

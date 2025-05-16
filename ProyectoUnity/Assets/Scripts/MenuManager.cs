@@ -14,9 +14,9 @@ public class MenuManager : MonoBehaviour
         }
         if (indexEscena == 3)
         {
-            GameData.Restaurante = "Espa�ol";
+            GameData.Restaurante = "Español";
         }
-        SceneManager.LoadScene(indexEscena);
+        SceneManager.LoadScene(1);
     }
 }
 

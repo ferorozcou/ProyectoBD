@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler //Hereda de esas clases que definen qué pasa cuando empiezas, mientras drageas y cuando terminas.
 {
@@ -9,10 +9,14 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private Vector3 posicionAnterior; //Almacena la posición anterior válida (por ejemplo, dentro del plato)
     private Vector3 escalaInicial; //Almacena la escala original para resetearla tras reducirla a 0
     private Vector3 posicionOriginal; //Almacena la posicion inicial incluso si lo hemos soltado en el plato
-
     public RectTransform transformPlato; //El RectTransform del objeto plato
     public RectTransform transformPapelera; //El RectTransform del objeto papelera
     public Canvas canvas; //Objeto para el canvas que necesitamos para convertir las coordenadas correctamente
+
+    public string nombreIngrediente; //ASIGNAMOS DESDE EL INSPECTOR PARA PODER COMPARARLO CON LOS DE LOS CLIENTES
+
+    public bool estaDentroDelPlato { get; private set; } // Nuevo flag público de sólo lectura
+
 
     void Awake()
     {
@@ -35,6 +39,7 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void ResetearIngrediente()
     {
+        estaDentroDelPlato = false; // Reseteamos el flag cada vez
         rectTransform.position = posicionOriginal;
         rectTransform.localScale = escalaInicial;
     }
@@ -77,6 +82,8 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             {
                 rectTransform.localScale += Vector3.one * 0.7f; // Aumentamos su escala en 0.7
             }
+
+            estaDentroDelPlato = true;
 
         }
         else //Si no se suelta sobre la papelera o el plato vuelve a su última posición válida

@@ -9,10 +9,41 @@ public class VenezolaneriaManager : MonoBehaviour
     public GameObject jefe; 
     public GameObject bocadillo;
     //Objeto tipo TextMeshPro.
-    public TextMeshProUGUI textoInstrucciones; 
+    public TextMeshProUGUI textoInstrucciones;
+    public string nombreRest;
+    public int escena;
 
-    private string[] instrucciones = { //Cadena de strings con las instrucciones.
-        "¡Bienvenido a Marico's Venezolaneria! ¿Qué desea pedir?",
+
+    private string[] instrucciones;
+
+    private int indiceActual = 0; //int para guardar el índice de la línea en la que nos encontramos.
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        if (GameData.Restaurante == "Venezolano")
+        {
+            nombreRest = "Marico's Venezolaneria";
+            escena = 2;
+
+        }
+        else if (GameData.Restaurante == "Mexicano")
+        {
+            nombreRest = "Wey's Mexicaneria";
+            escena = 3;
+
+        }
+        else if (GameData.Restaurante == "Español")
+        {
+            nombreRest = "Tio's Españoleria";
+            escena = 4;
+        }
+        else
+        {
+            Debug.Log("No se encontró el nombre del restaurante");
+        }
+        instrucciones = new string[]{ //Cadena de strings con las instrucciones.
+            $"¡Bienvenido a {nombreRest} ¿Qué desea pedir?",
         "¿Cómo? ¿Que no vienes a pedir nada?",
         "¡Ah, que eres el nuevo! ¡Qué despiste! Encantado de conocerte. Soy Carlino, tu jefe y el dueño de este imperio de restaurantes. " +
             "Verás... te explico un poco cómo van las cosas por aquí.",
@@ -24,14 +55,11 @@ public class VenezolaneriaManager : MonoBehaviour
         "Cada cliente siempre pedirá la misma bebida. Asegúrate de recordar cuál pide cada uno porque al principio te lo dirán, pero poco a poco dejarán de hacerlo.",
         "Una vez tengas todas las arepas y la bebida preparadas haz click sobre el botón con el tick para entregarlas.",
         "Eso es todo. ¡Mucha suerte, joven! Presiona enter si estás listo."
-    };
+                };
+    
 
-    private int indiceActual = 0; //int para guardar el índice de la línea en la que nos encontramos.
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        ActualizarTexto(); //Mostramos la primera línea de instrucciones
+    ActualizarTexto(); //Mostramos la primera línea de instrucciones
     }
 
     // Update is called once per frame
@@ -81,6 +109,7 @@ public class VenezolaneriaManager : MonoBehaviour
 
     void IniciarJuego()
     {
-        SceneManager.LoadScene(4);
+
+        SceneManager.LoadScene(escena);
     }
 }

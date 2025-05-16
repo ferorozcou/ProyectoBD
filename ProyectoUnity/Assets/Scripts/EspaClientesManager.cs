@@ -34,6 +34,8 @@ public class EspaClientesManager : MonoBehaviour
         pato.SetActive(false);
         int clientenum = UnityEngine.Random.Range(0, 5);
         animales[clientenum].SetActive(true);
+        GameData.cliente = nombreCliente[clientenum];
+        GameData.clienteNum = clientenum;
         textoPedido.text = $"Hola soy {nombreCliente[clientenum]}";
         pedido = GeneradorPedidos.GenerarPedido(dif, 2, nombreCliente[clientenum],nivel);
 
@@ -74,7 +76,7 @@ public class EspaClientesManager : MonoBehaviour
     }
     void Cocinar()
     {
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(5);
     }
 
 }

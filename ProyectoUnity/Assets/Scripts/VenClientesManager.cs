@@ -32,6 +32,8 @@ public class VenClientesManager : MonoBehaviour
         pato.SetActive(false);
         int clientenum = UnityEngine.Random.Range(0, 5);
         animales[clientenum].SetActive(true);
+        GameData.cliente = nombreCliente[clientenum];
+        GameData.clienteNum = clientenum;
         textoPedido.text = $"Hola soy {nombreCliente[clientenum]}";
         pedido = GeneradorPedidos.GenerarPedido(dif, 0, nombreCliente[clientenum],nivel);
 
@@ -72,6 +74,6 @@ public class VenClientesManager : MonoBehaviour
     }
     void Cocinar()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(7);
     }
 }

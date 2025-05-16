@@ -13,7 +13,7 @@ public class MexClientesManager : MonoBehaviour
     public TextMeshProUGUI textoPedido;
     public string[] nombreCliente = { "Capibara", "Conejo", "Gato", "Koala", "Pato" };
     int indice = -1;
-    int dif = 1;
+    int dif = 2;
     public string[] pedido;
     int nivel = 1;
 
@@ -34,6 +34,8 @@ public class MexClientesManager : MonoBehaviour
         pato.SetActive(false);
         int clientenum = UnityEngine.Random.Range(0, 5);
         animales[clientenum].SetActive(true);
+        GameData.cliente = nombreCliente[clientenum];
+        GameData.clienteNum = clientenum;
         textoPedido.text = $"Hola soy {nombreCliente[clientenum]}";
         pedido = GeneradorPedidos.GenerarPedido(dif, 1, nombreCliente[clientenum],nivel);
 
@@ -74,6 +76,6 @@ public class MexClientesManager : MonoBehaviour
     }
     void Cocinar()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(6);
     }
 }

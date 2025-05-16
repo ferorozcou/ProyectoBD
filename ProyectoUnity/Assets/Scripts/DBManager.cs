@@ -10,8 +10,22 @@ using UnityEngine;
 [DefaultExecutionOrder(-100)]
 public class DBManager : MonoBehaviour
 {
+    public static DBManager Instance;
     private string dbBaseUri = "URI=file:";
     IDbConnection dbConnection;
+
+    void Awake() //Singleton de DBManager
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
