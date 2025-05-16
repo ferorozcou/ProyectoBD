@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "Bot\xF3n_cerrar_0": 749149821175579508
+      "Bot\xF3n_cerrar_1": 2964694101814333364
+      "Bot\xF3n_cerrar_2": 6037222890395824813
+      "Bot\xF3n_cerrar_3": -3936922447914835493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

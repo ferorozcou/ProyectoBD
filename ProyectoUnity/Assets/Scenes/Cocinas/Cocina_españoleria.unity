@@ -677,7 +677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6475001, y: 0.28643152}
   m_AnchorMax: {x: 0.73986876, y: 0.51522183}
-  m_AnchoredPosition: {x: 2.3097992, y: 0.941597}
+  m_AnchoredPosition: {x: 2.3097992, y: 0.9416046}
   m_SizeDelta: {x: 5.6299973, y: 2.1699982}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &384829053
@@ -780,7 +780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6475001, y: 0.28643152}
   m_AnchorMax: {x: 0.73986876, y: 0.51522183}
-  m_AnchoredPosition: {x: 2.3097992, y: 0.941597}
+  m_AnchoredPosition: {x: 2.3097992, y: 0.9416046}
   m_SizeDelta: {x: 5.6299973, y: 2.1699982}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421522029
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 581364536}
   canvas: {fileID: 1612968016}
-  nombreIngrediente: "Jam\xF2n"
+  nombreIngrediente: "Jam\xF3n"
 --- !u!1 &650330086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 581364536}
   canvas: {fileID: 1612968016}
-  nombreIngrediente: Espinacas
+  nombreIngrediente: Espinaca
 --- !u!1 &828699848
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,7 +2149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13225001, y: 0.22211409}
   m_AnchorMax: {x: 0.63500005, y: 0.79966444}
-  m_AnchoredPosition: {x: -1.2000122, y: -4.500038}
+  m_AnchoredPosition: {x: -1.2000122, y: -4.5000305}
   m_SizeDelta: {x: -1.6000061, y: -1.3500061}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164580273
@@ -2274,7 +2274,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2020967093}
         m_TargetAssemblyTypeName: CocinaManager, Assembly-CSharp
-        m_MethodName: PasarBebidas
+        m_MethodName: CambiarABebidas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3227,7 +3227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00015258789, y: 0.00024414062}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0.00024414062}
   m_SizeDelta: {x: 401.08984, y: 225.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2020967092

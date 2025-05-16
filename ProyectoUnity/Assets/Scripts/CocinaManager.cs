@@ -169,6 +169,6 @@ public class CocinaManager : MonoBehaviour
 
     public void CambiarABebidas()
     {
-        SceneManager.LoadScene(10); // Puedes cambiar a 8 si usas la escena antigua
+        SceneManager.LoadScene(8); // Puedes cambiar a 8 si usas la escena antigua
     }
 }

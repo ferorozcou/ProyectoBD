@@ -34,20 +34,8 @@ public static class GameData
         erroresTotales = 0;
         var db = DBManager.Instance;
 
-        for (int i = 0; i < numElementos; i++)
-        {
-            string[] pedido = Elementos[i];
-            string[] preparado = ElementosJugador[i];
-
-            if (pedido == null || preparado == null)
-            {
-                Debug.Log($"Elemento {i + 1}: No se pudo evaluar.");
-                continue;
-            }
-            int errores = SonListasIguales(pedido, preparado);
-            erroresTotales= erroresTotales + errores;
-
-        }
+       
+        erroresTotales = ContarErrores(Elementos, ElementosJugador, numElementos);
 
         if (erroresTotales == 0)
             puntos = db.GetPuntajePedidoPerfecto(dificultad);
@@ -62,31 +50,33 @@ public static class GameData
         Debug.Log($"\nPUNTOS TOTALES DEL NIVEL: {puntos}\n");
     }
 
-    static int SonListasIguales(string[] pedido, string[] preparado)
-        {
-            if (pedido.Length != preparado.Length) return 2;
+    public static int ContarErrores(string[][] platos, string[][] platosJugador, int numPlatos)
+    {
         int errores = 0;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < numPlatos; i++)
         {
-            if (preparado[i] == pedido[0])
+            for (int j = 0; j < platos[i].Length; j++)
             {
+                string ingrediente = platos[i][j];
+                bool encontrado = false;
 
-            }
-            else if (preparado[i] == pedido[1])
-            {
+                for (int k = 0; k < platosJugador[i].Length; k++)
+                {
+                    if (ingrediente == platosJugador[i][k])
+                    {
+                        encontrado = true;
+                        break;
+                    }
+                }
 
-            }
-            else if (preparado[i] == pedido[2])
-            {
-
-            }
-            else
-            {
-                errores++;
+                if (!encontrado)
+                {
+                    errores++;
+                }
             }
         }
 
-            return errores;
-        }
+        return errores;
+    }
 }

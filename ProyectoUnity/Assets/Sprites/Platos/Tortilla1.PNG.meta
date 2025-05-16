@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tortilla1_0: 3789431967708677442
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
