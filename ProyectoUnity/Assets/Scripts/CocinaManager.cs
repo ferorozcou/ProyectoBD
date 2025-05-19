@@ -9,6 +9,7 @@ public class CocinaManager : MonoBehaviour
 {
     public static CocinaManager Instance;
     private List<DragManager> ingredientes = new List<DragManager>();
+    public EvaluarPuntosPedido evaluadorPuntos;
 
     public GameObject nuevaImagenUI; // Asigna esta imagen desde el inspector
     public GameObject mensajeErrorUI; // Imagen que se muestra si se supera el límite de clics
@@ -47,14 +48,13 @@ public class CocinaManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             Debug.Log("Se presionó la tecla B");
-            GameData.EvaluarPedidos();
+            evaluadorPuntos.EvaluarPedidos();
         }
     }
 
     public void RegistrarIngrediente(DragManager ingrediente) // Agregamos los ingredientes del plato a la lista
     {
-        if (!ingredientes.Contains(ingrediente))
-            ingredientes.Add(ingrediente);
+        ingredientes.Add(ingrediente);
     }
 
     public void ResetearTodo()
@@ -73,6 +73,7 @@ public class CocinaManager : MonoBehaviour
         {
             // Guardar los ingredientes actuales en el plato como un string[]
             List<string> ingredientesDelJugador = new List<string>();
+            ingredientes.RemoveAll(i => i.fueEliminado && !i.estaDentroDelPlato);
 
             foreach (DragManager ingrediente in ingredientes)
             {
@@ -96,13 +97,6 @@ public class CocinaManager : MonoBehaviour
                 contadorClicks++;
             }
 
-            if(clicks == 3)
-            {
-                
-                  Debug.Log("Se presionó la tecla Space");
-                  GameData.EvaluarPedidos();
-                
-            }
 
             clicks++;
         }

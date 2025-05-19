@@ -1,4 +1,5 @@
 using System.Collections;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,7 +16,12 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public string nombreIngrediente; //ASIGNAMOS DESDE EL INSPECTOR PARA PODER COMPARARLO CON LOS DE LOS CLIENTES
 
-    public bool estaDentroDelPlato { get; private set; } // Nuevo flag público de sólo lectura
+    public bool estaDentroDelPlato { get; private set; }
+
+    public int indicePlato;
+
+    public bool fueEliminado { get; private set; }
+
 
 
     void Awake()
@@ -39,6 +45,7 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void ResetearIngrediente()
     {
+        fueEliminado = false;
         estaDentroDelPlato = false; // Reseteamos el flag cada vez
         rectTransform.position = posicionOriginal;
         rectTransform.localScale = escalaInicial;
@@ -70,7 +77,9 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         //Si el ratón está sobre la papelera
         if (RectTransformUtility.RectangleContainsScreenPoint(transformPapelera, Input.mousePosition, canvas.worldCamera))
         {
-            Debug.Log("Ingrediente tirado a la papelera");
+            GameData.puntosPapelera -= 30; //FALTA PONER EL IF POR NIVELES
+            Debug.Log("Ingrediente tirado a la papelera. PuntosPapelera = " + GameData.puntosPapelera);
+            fueEliminado = true; // Bool que regula si eliminamos o no el ingrediente
             StartCoroutine(ReduceAndReset()); //Iniciamos la animación para reducir su tamaño y que luego vuelva al original
         }
         //Si el ingrediente está completamente dentro del plato
@@ -84,6 +93,7 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
 
             estaDentroDelPlato = true;
+            fueEliminado = false; // REHABILITAMOS el ingrediente si vuelve al plato
 
         }
         else //Si no se suelta sobre la papelera o el plato vuelve a su última posición válida

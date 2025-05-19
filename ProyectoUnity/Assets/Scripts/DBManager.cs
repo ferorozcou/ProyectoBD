@@ -2,17 +2,19 @@ using Mono.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Data;
+
 using System.Globalization;
 using System.IO;
 using UnityEngine;
 
 
-[DefaultExecutionOrder(-100)]
+[DefaultExecutionOrder(-1000)]
 public class DBManager : MonoBehaviour
 {
     public static DBManager Instance;
     private string dbBaseUri = "URI=file:";
     IDbConnection dbConnection;
+    private static bool pedidosLimpiados = false;
 
     void Awake() //Singleton de DBManager
     {
@@ -43,12 +45,28 @@ public class DBManager : MonoBehaviour
 
         createTables();
         populateDB();
+        if (!pedidosLimpiados)
+        {
+            LimpiarTablaPedidos();
+            pedidosLimpiados = true;
+            Debug.Log("Tabla Pedidos limpiada al iniciar la ejecución.");
+        }
 
     }
-
+    void OnEnable()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     public int GetNumeroElementosPorDificultad(string dificultad)
     {
+        if (dbConnection == null)
+        {
+            Debug.LogError("dbConnection no está inicializada en GetNumeroElementosPorDificultad");
+            return 1; 
+        }
+
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $"SELECT NumeroElementos FROM TiposPedidos WHERE Dificultad = '{dificultad}';";
         IDataReader reader = command.ExecuteReader();
@@ -283,4 +301,110 @@ public class DBManager : MonoBehaviour
             Debug.Log("Conexión a la base de datos cerrada.");
         }
     }
+    public void ActualizarPuntosObtenidos(int idPedido, int puntos)
+    {
+        using (IDbCommand command = dbConnection.CreateCommand())
+        {
+            command.CommandText = "UPDATE Pedidos SET [Puntos obtenidos] = @puntos WHERE Id = @id;";
+
+            var paramPuntos = command.CreateParameter();
+            paramPuntos.ParameterName = "@puntos";
+            paramPuntos.Value = puntos;
+            command.Parameters.Add(paramPuntos);
+
+            var paramId = command.CreateParameter();
+            paramId.ParameterName = "@id";
+            paramId.Value = idPedido;
+            command.Parameters.Add(paramId);
+
+            try
+            {
+                command.ExecuteNonQuery();
+                Debug.Log("Puntos actualizados correctamente.");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error al actualizar puntos: " + e.Message);
+            }
+        }
+    }
+
+    public int ObtenerPuntosTotales(int nivel, string restaurante)
+    {
+        using (IDbCommand command = dbConnection.CreateCommand())
+        {
+            command.CommandText = "SELECT SUM([Puntos obtenidos]) FROM Pedidos WHERE Nivel = @nivel AND Restaurante = @restaurante;";
+
+            var paramNivel = command.CreateParameter();
+            paramNivel.ParameterName = "@nivel";
+            paramNivel.Value = nivel;
+            command.Parameters.Add(paramNivel);
+
+            var paramRestaurante = command.CreateParameter();
+            paramRestaurante.ParameterName = "@restaurante";
+            paramRestaurante.Value = restaurante;
+            command.Parameters.Add(paramRestaurante);
+
+            IDataReader reader = command.ExecuteReader();
+            if (reader.Read() && !reader.IsDBNull(0))
+            {
+                return reader.GetInt32(0);
+            }
+            return 0;
+        }
+    }
+
+    public void LimpiarTablaPedidos()
+    {
+        using (IDbCommand command = dbConnection.CreateCommand())
+        {
+            command.CommandText = "DELETE FROM Pedidos;";
+            try
+            {
+                command.ExecuteNonQuery();
+                Debug.Log("Tabla Pedidos limpiada correctamente.");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error al limpiar tabla Pedidos: " + e.Message);
+            }
+        }
+    }
+    public int ObtenerUltimoIdPedidoInsertado()
+    {
+        using (IDbCommand command = dbConnection.CreateCommand())
+        {
+            command.CommandText = "SELECT last_insert_rowid();";
+            try
+            {
+                object result = command.ExecuteScalar();
+                return Convert.ToInt32(result);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error al obtener el último ID de pedido: " + e.Message);
+                return -1;
+            }
+        }
+
+    }
+    public int ObtenerIdPedido()
+    {
+        using (IDbCommand command = dbConnection.CreateCommand())
+        {
+            command.CommandText = "SELECT last_insert_rowid();";
+            try
+            {
+                object result = command.ExecuteScalar();
+                return Convert.ToInt32(result);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error al obtener el último ID de pedido: " + e.Message);
+                return -1;
+            }
+        }
+    }
 }
+
+

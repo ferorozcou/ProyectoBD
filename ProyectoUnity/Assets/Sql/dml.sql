@@ -6,8 +6,8 @@ INSERT INTO Clientes (Animal, FraseFacil, FraseDificil) VALUES
     ('Koala', 'Y un Ice… Tea', 'Zzzz');
 
 INSERT INTO Bebidas (Nombre, Cliente) VALUES
-    ('Agua', 'Pato'),
-    ('Cocacola', 'Capibara'),
+    ('Agua', 'Capibara'),
+    ('Cocacola', 'Pato'),
     ('Sprite', 'Gato'),
     ('Zumo', 'Conejo'),
     ('Ice Tea', 'Koala');

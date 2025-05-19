@@ -1,18 +1,28 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PedidoGenerator : MonoBehaviour
 {
-    public DBManager dbManager; // Asignalo desde el Inspector si es necesario
 
-    void Start()
+
+    IEnumerator Start()
     {
+        yield return null; // Asegura que DBManager haya hecho Start()
 
+        if (DBManager.Instance == null)
+        {
+            Debug.LogError("DBManager.Instance no está disponible");
+            yield break;
+        }
+
+        // Ahora puedes llamar GetNumeroElementosPorDificultad...
     }
-
     public string[] GenerarPedido(int dif, int rest, string cliente, int nivel)
     {
+        var dbManager = DBManager.Instance;
         if (dbManager == null)
         {
             Debug.LogError("DBManager no asignado en PedidoGenerator.");
@@ -85,6 +95,7 @@ public class PedidoGenerator : MonoBehaviour
         // Guardamos la bebida y registramos el pedido en la base de datos
         GameData.bebida = dbManager.GetBebida(cliente);
         dbManager.AnadirPedidoDB(dificultad, GameData.bebida, restaurante, nivel);
+        GameData.idPedidoActual = dbManager.ObtenerIdPedido();
 
         return Pedido;
     }

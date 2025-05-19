@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,21 +25,31 @@ public class EspaClientesManager : MonoBehaviour
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    IEnumerator Start()
     {
+        yield return null; // Espera un frame para asegurar que DBManager está listo
+
+        if (DBManager.Instance == null)
+        {
+            Debug.LogError("DBManager.Instance no está disponible");
+            yield break;
+        }
+
         animales = new GameObject[] { capibara, conejo, gato, koala, pato };
         capibara.SetActive(false);
         conejo.SetActive(false);
         gato.SetActive(false);
         koala.SetActive(false);
         pato.SetActive(false);
+
         int clientenum = UnityEngine.Random.Range(0, 5);
         animales[clientenum].SetActive(true);
+
         GameData.cliente = nombreCliente[clientenum];
         GameData.clienteNum = clientenum;
         textoPedido.text = $"Hola soy {nombreCliente[clientenum]}";
-        pedido = GeneradorPedidos.GenerarPedido(dif, 2, nombreCliente[clientenum],nivel);
 
+        pedido = GeneradorPedidos.GenerarPedido(dif, 2, nombreCliente[clientenum], nivel);
     }
 
     // Update is called once per frame

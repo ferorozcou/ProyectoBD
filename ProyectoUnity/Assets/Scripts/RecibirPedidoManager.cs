@@ -9,23 +9,29 @@ public class RecibirPedidoManager : MonoBehaviour
 {
     public GameObject capibara, conejo, gato, koala, pato, fondoVen, fondoMex, fondoEsp, tortillas2, arepas2,sopes2, tortillas1, arepas1, sopes1, tortillas3, arepas3, sopes3, agua, cocacola, sprite, zumo, icetea;
     public GameObject[] animales;
-    public TextMeshProUGUI textoPedido;
+    public TextMeshProUGUI textoMensaje;
     public string[] nombreCliente = { "Capibara", "Conejo", "Gato", "Koala", "Pato" };
-    int indice = -1;
     int dif = 1;
     public string[] pedido;
     int nivel = 1;
+    private string[] mensaje;
+    private string bienOmal;
+    private int puntos;
+    int indiceActual;
+    int escena;
+    string bebidaCorrecta;
 
-    void EscribirPedido()
+    void EscribirMensaje()
     {
-        string v = pedido[indice];
-        textoPedido.text = v;
+        string v = mensaje[indiceActual];
+        textoMensaje.text = v;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animales = new GameObject[] { capibara, conejo, gato, koala, pato };
+        indiceActual = 0;
+        animales = new GameObject[] { capibara, conejo, gato, koala, pato };;
         capibara.SetActive(false);
         conejo.SetActive(false);
         gato.SetActive(false);
@@ -48,9 +54,12 @@ public class RecibirPedidoManager : MonoBehaviour
         sprite.SetActive(false);
         zumo.SetActive(false);
         icetea.SetActive(false);
+        var db = DBManager.Instance;
+        bebidaCorrecta = db.GetBebida(nombreCliente[GameData.clienteNum]);
         if (GameData.Restaurante == "Venezolano")
         {
             fondoVen.SetActive(true);
+            escena = 2;
             if (GameData.numElementos == 1)
             {
                 arepas1.SetActive(true);
@@ -68,6 +77,7 @@ public class RecibirPedidoManager : MonoBehaviour
         else if (GameData.Restaurante == "Mexicano")
         {
             fondoMex.SetActive(true);
+            escena = 3;
             if (GameData.numElementos == 1)
             {
                 sopes1.SetActive(true);
@@ -85,6 +95,7 @@ public class RecibirPedidoManager : MonoBehaviour
         else if (GameData.Restaurante == "Español")
         {
             fondoEsp.SetActive(true);
+            escena = 4;
             if (GameData.numElementos == 1)
             {
                 tortillas1.SetActive(true);
@@ -101,6 +112,9 @@ public class RecibirPedidoManager : MonoBehaviour
         else
         {
             Debug.Log("No se encontró el nombre del restaurante");
+        }
+        if (GameData.bebidaSeleccionada == bebidaCorrecta){
+            GameData.puntosPedidoActual = GameData.puntosPedidoActual + 15;
         }
         if(GameData.bebidaSeleccionada== "Cocacola")
         {
@@ -126,36 +140,66 @@ public class RecibirPedidoManager : MonoBehaviour
         {
             Debug.Log("No se encontró el nombre de la bebida");
         }
+        puntos = GameData.puntosPedidoActual;
+        if (puntos > 99)
+        {
+            bienOmal = "Wow, está muy bueno";
+        }
+        else
+        {
+            bienOmal = "Mmmm, creo que podría estar mejor";
+        }
+        
+
+        mensaje = new string[]{ //Cadena de strings con las instrucciones.
+            "Wow que bueno luce todo, veamos que tal está",
+        "...",
+        $"{bienOmal}" ,
+            $"Tu puntaje es {puntos} puntos",
+        "Presiona Enter para pasar al siguiente cliente",
+                };
 
         animales[GameData.clienteNum].SetActive(true);
+        EscribirMensaje();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void SiguienteElemento()
-    {
-        if (indice < pedido.Length - 1)
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            indice++;
-            EscribirPedido();
+            SiguienteMensaje();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            AnteriorMensaje();
+        }
+        else if (Input.GetKeyDown(KeyCode.Return) && indiceActual == mensaje.Length - 1) //Si hemos llegado a la última línea y presionamos Enter inicia el juego.
+        {
+            OtroPedido();
         }
     }
-    void AnterioElemento()
+
+    void SiguienteMensaje()
     {
-        if (indice > 0)
+        if (indiceActual < mensaje.Length - 1)
         {
-            indice--;
-            EscribirPedido();
+            indiceActual++;
+            EscribirMensaje();
         }
     }
-    void Cocinar()
+    void AnteriorMensaje()
     {
-        SceneManager.LoadScene(6);
+        if (indiceActual > 0)
+        {
+            indiceActual--;
+            EscribirMensaje();
+        }
+    }
+    void OtroPedido()
+    {
+        SceneManager.LoadScene(escena);
     }
 
 }

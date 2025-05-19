@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS "Pedidos" (
 	"Bebida"	TEXT,
 	"Restaurante" TEXT,
 	"Nivel" INTEGER,
+	"Puntos obtenidos" INTEGER,
 	FOREIGN KEY("Bebida") REFERENCES "Bebidas"("Nombre"),
 	FOREIGN KEY("Tipo") REFERENCES "TiposPedidos"("Dificultad"),
 	FOREIGN KEY("Restaurante") REFERENCES "Restaurantes" ("Tipo"),
