@@ -15,7 +15,6 @@ public class CocinaManager : MonoBehaviour
     public GameObject mensajeErrorUI; // Imagen que se muestra si se supera el límite de clics
     public GameObject Ayuda, BotonCerrar; // Referencias para mostrar y ocultar la ayuda
 
-    public int numeroElementos = 3; // Número máximo de veces que se puede hacer clic
     private int contadorClicks = 0; // Lleva el conteo de cuántas veces se ha hecho clic
 
     private Vector3 posicionOriginal; // Guarda la posición original del plato final
@@ -24,6 +23,9 @@ public class CocinaManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        // Asignamos numElementos según dificultad
+        GameData.ActualizarNumElementos();
     }
 
     void Start()
@@ -59,7 +61,7 @@ public class CocinaManager : MonoBehaviour
 
     public void ResetearTodo()
     {
-        bool puedeGuardar = contadorClicks < numeroElementos;
+        bool puedeGuardar = contadorClicks < GameData.numElementos;
         int clicks = 0;
 
         // Si ya se alcanzó el límite, mostramos el mensaje de error, pero igual continuamos con el resto del reseteo
@@ -96,7 +98,6 @@ public class CocinaManager : MonoBehaviour
                 Debug.Log($"Guardado en ElementosJugador[{contadorClicks}]: {string.Join(", ", ingredientesDelJugador)}");
                 contadorClicks++;
             }
-
 
             clicks++;
         }

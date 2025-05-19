@@ -20,4 +20,24 @@ public static class GameData
 
     public static string[][] Elementos = new string[5][];
     public static string[][] ElementosJugador = new string[5][];
+
+    // Método para actualizar el número de elementos según la dificultad
+    public static void ActualizarNumElementos()
+    {
+        switch (dificultad)
+        {
+            case "Fácil":
+                numElementos = 1;
+                break;
+            case "Medio":
+                numElementos = 3;
+                break;
+            case "Difícil":
+                numElementos = 5;
+                break;
+            default:
+                numElementos = 3;
+                break;
+        }
+    }
 }

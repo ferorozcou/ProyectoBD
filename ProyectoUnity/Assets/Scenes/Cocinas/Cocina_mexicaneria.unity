@@ -210,6 +210,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Sopes
+  indicePlato: 0
 --- !u!1 &54742610
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,11 +241,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f9cb0920b0c0b47aeec20b9ad86a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  evaluadorPuntos: {fileID: 626093085}
   nuevaImagenUI: {fileID: 709430861}
   mensajeErrorUI: {fileID: 695750780}
   Ayuda: {fileID: 1401214025}
   BotonCerrar: {fileID: 409926654}
-  numeroElementos: 3
 --- !u!4 &54742612
 Transform:
   m_ObjectHideFlags: 0
@@ -350,6 +352,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Chorizo
+  indicePlato: 0
 --- !u!1 &189718711
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +445,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Lechuga
+  indicePlato: 0
 --- !u!1 &409926654
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +745,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Pollo
+  indicePlato: 0
 --- !u!1 &608438679
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +822,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608438679}
   m_CullTransparentMesh: 1
+--- !u!1 &626093084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626093086}
+  - component: {fileID: 626093085}
+  m_Layer: 0
+  m_Name: EvaluadorPedidos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &626093085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626093084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5de41fc67df1a40be2ab96fb16a1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  erroresTotales: 0
+  puntos: 0
+--- !u!4 &626093086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626093084}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0721186, y: -2.129339, z: -0.33135504}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &694802018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,6 +1339,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Frijoles blancos
+  indicePlato: 0
 --- !u!1 &965816700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,7 +1637,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 54742611}
         m_TargetAssemblyTypeName: CocinaManager, Assembly-CSharp
-        m_MethodName: PasarBebidas
+        m_MethodName: CambiarABebidas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1945,6 +2001,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Frijoles negros
+  indicePlato: 0
 --- !u!1 &1414047238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,6 +2380,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Queso
+  indicePlato: 0
 --- !u!1 &1612968013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2881,6 +2941,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Crema
+  indicePlato: 0
 --- !u!1 &1831921951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,6 +3184,8 @@ MonoBehaviour:
   transformPlato: {fileID: 1232797538}
   transformPapelera: {fileID: 970247627}
   canvas: {fileID: 1612968016}
+  nombreIngrediente: Aguacate
+  indicePlato: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3130,3 +3194,4 @@ SceneRoots:
   - {fileID: 1612968017}
   - {fileID: 828699851}
   - {fileID: 54742612}
+  - {fileID: 626093086}
