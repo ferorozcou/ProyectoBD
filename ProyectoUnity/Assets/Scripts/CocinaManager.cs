@@ -56,7 +56,13 @@ public class CocinaManager : MonoBehaviour
 
     public void RegistrarIngrediente(DragManager ingrediente) // Agregamos los ingredientes del plato a la lista
     {
-        ingredientes.Add(ingrediente);
+        if (!ingredientes.Contains(ingrediente)) // Evitamos duplicados
+            ingredientes.Add(ingrediente);
+    }
+
+    public void EliminarIngrediente(DragManager ingrediente) // Eliminamos ingredientes tirados a la papelera
+    {
+        ingredientes.Remove(ingrediente);
     }
 
     public void ResetearTodo()
@@ -75,7 +81,7 @@ public class CocinaManager : MonoBehaviour
         {
             // Guardar los ingredientes actuales en el plato como un string[]
             List<string> ingredientesDelJugador = new List<string>();
-            ingredientes.RemoveAll(i => i.fueEliminado && !i.estaDentroDelPlato);
+            ingredientes.RemoveAll(i => i.fueEliminado && !i.estaDentroDelPlato); // Limpieza de ingredientes eliminados fuera del plato
 
             foreach (DragManager ingrediente in ingredientes)
             {

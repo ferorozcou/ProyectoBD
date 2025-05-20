@@ -1,5 +1,4 @@
 using System.Collections;
-
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -22,8 +21,6 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public bool fueEliminado { get; private set; }
 
-
-
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>(); //Obtenemos y almacenamos en la variable el RectTransform del objeto
@@ -41,7 +38,6 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         CocinaManager.Instance.RegistrarIngrediente(this);
     }
-
 
     public void ResetearIngrediente()
     {
@@ -77,9 +73,11 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         //Si el ratón está sobre la papelera
         if (RectTransformUtility.RectangleContainsScreenPoint(transformPapelera, Input.mousePosition, canvas.worldCamera))
         {
-            GameData.puntosPapelera -= 30; //FALTA PONER EL IF POR NIVELES
+            GameData.puntosPapelera -= 15; //FALTA PONER EL IF POR NIVELES
             Debug.Log("Ingrediente tirado a la papelera. PuntosPapelera = " + GameData.puntosPapelera);
             fueEliminado = true; // Bool que regula si eliminamos o no el ingrediente
+            estaDentroDelPlato = false; // Ya no está en el plato
+            CocinaManager.Instance.EliminarIngrediente(this); // Lo quitamos del array de CocinaManager
             StartCoroutine(ReduceAndReset()); //Iniciamos la animación para reducir su tamaño y que luego vuelva al original
         }
         //Si el ingrediente está completamente dentro del plato
@@ -94,7 +92,7 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
             estaDentroDelPlato = true;
             fueEliminado = false; // REHABILITAMOS el ingrediente si vuelve al plato
-
+            CocinaManager.Instance.RegistrarIngrediente(this); // Volvemos a agregarlo si no está
         }
         else //Si no se suelta sobre la papelera o el plato vuelve a su última posición válida
         {
