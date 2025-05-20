@@ -53,7 +53,11 @@ public class LevelTimer : MonoBehaviour
         if (mensajeTiempoTerminado == null)
             mensajeTiempoTerminado = GameObject.Find("MensajeTiempoAcabado");
 
-        ActualizarTextoTemporizador(); // Forzar actualización al cargar nueva escena
+        // Reiniciamos el temporizador y ocultamos el mensaje cada vez que se carga una escena
+        InicializarTiempo();
+
+        // Forzar actualización al cargar nueva escena
+        ActualizarTextoTemporizador();
     }
 
     void InicializarTiempo()
