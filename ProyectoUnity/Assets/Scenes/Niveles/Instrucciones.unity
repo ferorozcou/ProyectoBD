@@ -227,9 +227,9 @@ RectTransform:
   m_Father: {fileID: 1977387030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049852125, y: 0.23168471}
-  m_AnchorMax: {x: 0.9371479, y: 0.61039436}
-  m_AnchoredPosition: {x: -724.5, y: 49}
-  m_SizeDelta: {x: -1451, y: -110}
+  m_AnchorMax: {x: 0.9371479, y: 0.65065366}
+  m_AnchoredPosition: {x: -724.5, y: 43.5}
+  m_SizeDelta: {x: -1451, y: -121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423406905
 MonoBehaviour:
@@ -280,8 +280,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -5.6686916, z: -1450.5193, w: -103.683426}
+  m_margin: {x: 0, y: -15.833217, z: -1450.5193, w: -103.683426}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -529,6 +529,10 @@ MonoBehaviour:
   jefe: {fileID: 438584132}
   bocadillo: {fileID: 1977387029}
   textoInstrucciones: {fileID: 423406905}
+  nombreRest: 
+  escena: 0
+  plato: 
+  a_o: 0
 --- !u!1 &1946123267
 GameObject:
   m_ObjectHideFlags: 0

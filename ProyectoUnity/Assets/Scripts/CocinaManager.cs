@@ -1,10 +1,10 @@
-// === CocinaManager.cs ===
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class CocinaManager : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class CocinaManager : MonoBehaviour
     public GameObject mensajeErrorUI; // Imagen que se muestra si se supera el límite de clics
     public GameObject Ayuda, BotonCerrar; // Referencias para mostrar y ocultar la ayuda
     public GameObject botonEntregar; // Botón de entregar asignado desde el inspector
-
+    public TextMeshProUGUI notaPedido; //Texto con la nota del pedido en la UI
     private int contadorClicks = 0; // Lleva el conteo de cuántas veces se ha hecho clic
 
     private Vector3 posicionOriginal; // Guarda la posición original del plato final
@@ -34,6 +34,7 @@ public class CocinaManager : MonoBehaviour
 
     void Start()
     {
+        ActualizarNotaPedido();
         if (Ayuda != null) Ayuda.SetActive(false);
         if (BotonCerrar != null) BotonCerrar.SetActive(false);
 
@@ -128,6 +129,7 @@ public class CocinaManager : MonoBehaviour
             nuevaImagenUI.transform.localPosition = posicionOriginal;
             StartCoroutine(AnimarImagen());
         }
+        ActualizarNotaPedido(); // Cuando el pedido se resetee también las notas
     }
 
     private IEnumerator AnimarImagen()
@@ -177,6 +179,28 @@ public class CocinaManager : MonoBehaviour
     public void CambiarABebidas()
     {
         evaluadorPuntos.EvaluarPedidos();
-        SceneManager.LoadScene(8); // Puedes cambiar a 8 si usas la escena antigua
+        SceneManager.LoadScene(8);
+    }
+
+
+    // Método para actualizar notaPedido con los elementos actuales de GameData.Elementos
+    public void ActualizarNotaPedido()
+    {
+        if (notaPedido == null) return;  // Por si no está asignado en inspector
+
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+        for (int i = 0; i < GameData.numElementos; i++)
+        {
+            // Validar que Elementos[i] no sea null para evitar error
+            if (GameData.Elementos[i] != null)
+            {
+                sb.Append($"Elemento {i + 1}: ");
+                sb.Append(string.Join(", ", GameData.Elementos[i])); //Une todos los strings del array Elementos separados por coma y espacio
+                sb.Append("\n"); //Salto de línea para el siguiente elemento. 
+            }
+        }
+
+        notaPedido.text = sb.ToString();
     }
 }

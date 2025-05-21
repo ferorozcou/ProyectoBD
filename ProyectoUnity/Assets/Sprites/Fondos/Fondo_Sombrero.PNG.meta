@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fondo_Sombrero_0: -7608432023696646833
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

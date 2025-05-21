@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fondo_clavel (1)_0: 502181735782705429
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

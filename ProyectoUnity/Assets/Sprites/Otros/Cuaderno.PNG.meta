@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 71247480ed2502145878b7b9a5b4694b
+guid: 171ec4b797d8e8e47ac96b5915e54ad5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2878899452649124234
-    second: Volver_a_intentar_0
+      213: -8679596953879572040
+    second: Cuaderno_0
   - first:
-      213: -7411452572077427081
-    second: Volver_a_intentar_1
+      213: -5268710909556462247
+    second: Cuaderno_1
   - first:
-      213: 855911363336088225
-    second: Volver_a_intentar_2
+      213: 8974509135145059547
+    second: Cuaderno_2
   - first:
-      213: -8882876624123439625
-    second: Volver_a_intentar_3
+      213: 4073449604240188212
+    second: Cuaderno_3
+  - first:
+      213: -1000459928057372008
+    second: Cuaderno_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Volver_a_intentar_0
+      name: Cuaderno_0
       rect:
         serializedVersion: 2
-        x: 223
-        y: 1017
-        width: 60
-        height: 63
+        x: 552
+        y: 979
+        width: 54
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a81b7339cc7e3f720800000000000000
-      internalID: 2878899452649124234
+      spriteID: 8b112729e80eb8780800000000000000
+      internalID: -8679596953879572040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Volver_a_intentar_1
+      name: Cuaderno_1
       rect:
         serializedVersion: 2
-        x: 549
-        y: 361
-        width: 912
-        height: 256
+        x: 0
+        y: 834
+        width: 18
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7767bab372b352990800000000000000
-      internalID: -7411452572077427081
+      spriteID: 95d69a3b757c1e6b0800000000000000
+      internalID: -5268710909556462247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Volver_a_intentar_2
+      name: Cuaderno_2
       rect:
         serializedVersion: 2
-        x: 860
-        y: 338
-        width: 164
-        height: 26
+        x: 0
+        y: 274
+        width: 12
+        height: 139
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +171,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1aa2ed2a9dec0eb00800000000000000
-      internalID: 855911363336088225
+      spriteID: bd4c1d9628cdb8c70800000000000000
+      internalID: 8974509135145059547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Volver_a_intentar_3
+      name: Cuaderno_3
       rect:
         serializedVersion: 2
-        x: 1562
+        x: 8
+        y: 126
+        width: 420
+        height: 554
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 433213f35dcc78830800000000000000
+      internalID: 4073449604240188212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cuaderno_4
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
-        width: 53
-        height: 43
+        width: 26
+        height: 67
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f5508b16cea9b480800000000000000
-      internalID: -8882876624123439625
+      spriteID: 892a0200ff6ad12f0800000000000000
+      internalID: -1000459928057372008
       vertices: []
       indices: 
       edges: []
@@ -209,11 +234,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Volver_a_intentar_0: 2878899452649124234
-      Volver_a_intentar_1: -7411452572077427081
-      Volver_a_intentar_2: 855911363336088225
-      Volver_a_intentar_3: -8882876624123439625
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
