@@ -29,7 +29,7 @@ public class RecibirPedidoManager : MonoBehaviour
     void Start()
     {
         indiceActual = 0;
-        animales = new GameObject[] { capibara, conejo, gato, koala, pato };;
+        animales = new GameObject[] { capibara, conejo, gato, koala, pato };
         capibara.SetActive(false);
         conejo.SetActive(false);
         gato.SetActive(false);

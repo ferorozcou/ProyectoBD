@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using TMPro; // Permite usar texto TextMeshPro
 using UnityEngine.SceneManagement;
+using System.Threading;
+
 
 public class LevelTimer : MonoBehaviour
 {
@@ -128,11 +130,23 @@ public class LevelTimer : MonoBehaviour
 
     void TiempoTerminado() // Muestra el mensaje de que se acabo el tiempo 
     {
+        var db = DBManager.Instance;
         tiempoAgotado = true;
         Debug.Log("¡Tiempo terminado!");
 
         if (mensajeTiempoTerminado != null)
             mensajeTiempoTerminado.SetActive(true); // Se activa el mensaje
+        Thread.Sleep(1000);
+        if (GameData.Nivel == 3)
+        {
+            if (GameData.puntosNivel >= db.ObtenerPuntosRequeridosPorNivel(GameData.Nivel))
+            {
+                SceneManager.LoadScene(11);
+            }
+            else SceneManager.LoadScene(10);
+        }
+        else SceneManager.LoadScene(10);
+
     }
 
     void ActualizarTextoTemporizador() // Convierte el tiempo en segundos y lo muestra en pantalla

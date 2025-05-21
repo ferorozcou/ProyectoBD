@@ -31,26 +31,38 @@ public class DBManager : MonoBehaviour
 
     void Start()
     {
-        string dbFileName = "restaurante.db";
-        string dbFolderPath = Path.Combine(Application.dataPath, "Sql"); // Ruta a Assets/Sql
-        Directory.CreateDirectory(dbFolderPath); // Asegura que la carpeta existe
+       
+            string dbFileName = "restaurante.db";
+            string streamingPath = Path.Combine(Application.streamingAssetsPath, dbFileName);
+            string persistentPath = Path.Combine(Application.persistentDataPath, dbFileName);
 
-        string dbFilePath = Path.Combine(dbFolderPath, dbFileName);
-        string path = dbBaseUri + dbFilePath;
+            // Si no existe en persistentDataPath, copiamos desde StreamingAssets
+            if (!File.Exists(persistentPath))
+            {
+                Debug.Log("Copiando base de datos desde StreamingAssets a persistentDataPath...");
+#if UNITY_ANDROID
+        // En Android hay que usar UnityWebRequest para leer desde StreamingAssets
+        StartCoroutine(CopiarDBDesdeStreamingAssets(streamingPath, persistentPath));
+#else
+                File.Copy(streamingPath, persistentPath);
+#endif
+            }
 
-        Debug.Log("Ruta DB: " + path);
+            string path = dbBaseUri + persistentPath;
+            Debug.Log("Ruta DB final: " + path);
 
-        dbConnection = new SqliteConnection(path);
-        dbConnection.Open();
+            dbConnection = new SqliteConnection(path);
+            dbConnection.Open();
 
-        createTables();
-        populateDB();
-        if (!pedidosLimpiados)
-        {
-            LimpiarTablaPedidos();
-            pedidosLimpiados = true;
-            Debug.Log("Tabla Pedidos limpiada al iniciar la ejecución.");
-        }
+            createTables();
+            populateDB();
+            if (!pedidosLimpiados)
+            {
+                LimpiarTablaPedidos();
+                pedidosLimpiados = true;
+                Debug.Log("Tabla Pedidos limpiada al iniciar la ejecución.");
+            }
+        
 
     }
     void OnEnable()
@@ -284,7 +296,7 @@ public class DBManager : MonoBehaviour
 
     private string readFromFile(string fileName)
     {
-        string path = Path.Combine(Application.dataPath, fileName);
+        string path = Path.Combine(Application.streamingAssetsPath, fileName);
         return File.ReadAllText(path);
     }
 

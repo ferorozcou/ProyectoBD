@@ -53,6 +53,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/Recompensas.unity
     guid: 075eb084f33e6ec4aaae71aa9e467db0
+  - enabled: 1
+    path: Assets/Scenes/Menus/FINAL.unity
+    guid: 598c2d980f2090c42b66e237bd7ed9cc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

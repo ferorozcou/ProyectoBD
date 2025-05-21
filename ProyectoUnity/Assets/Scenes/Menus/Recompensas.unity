@@ -213,8 +213,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2040583893}
   - {fileID: 817128669}
+  - {fileID: 2040583893}
   - {fileID: 744294298}
   - {fileID: 1688840833}
   m_Father: {fileID: 0}
@@ -597,7 +597,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817128668}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -647,7 +647,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817128668}
   m_CullTransparentMesh: 1
---- !u!1 &1436091003
+--- !u!1 &1309901242
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -655,78 +655,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1436091005}
-  - component: {fileID: 1436091004}
+  - component: {fileID: 1309901244}
+  - component: {fileID: 1309901243}
   m_Layer: 0
-  m_Name: MenuManager
+  m_Name: RecompensaManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1436091004
+--- !u!114 &1309901243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436091003}
+  m_GameObject: {fileID: 1309901242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc34cf286067a342bcfaa3164dbad06, type: 3}
+  m_Script: {fileID: 11500000, guid: 1568d7e354a7ccc44b4ccf27d63ec759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1436091005
+  Ven: {fileID: 817128668}
+  Mex: {fileID: 2040583892}
+  Esp: {fileID: 744294297}
+--- !u!4 &1309901244
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436091003}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 445.3903, y: 232.49469, z: -3.1914625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1496190691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1496190693}
-  - component: {fileID: 1496190692}
-  m_Layer: 0
-  m_Name: DBManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1496190692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496190691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb3abe7b2e84b349a1cdef68f4e145d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1496190693
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496190691}
+  m_GameObject: {fileID: 1309901242}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.3729284, y: -2.0600812, z: 272.01514}
@@ -818,10 +777,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1436091004}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: CargarNivel
-        m_Mode: 3
+      - m_Target: {fileID: 1309901243}
+        m_TargetAssemblyTypeName: Recompensa, Assembly-CSharp
+        m_MethodName: SiguienteRestaurante
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1029,5 +988,4 @@ SceneRoots:
   - {fileID: 475996340}
   - {fileID: 399270368}
   - {fileID: 1818904202}
-  - {fileID: 1436091005}
-  - {fileID: 1496190693}
+  - {fileID: 1309901244}
