@@ -239,6 +239,10 @@ MonoBehaviour:
   - koala
   - pato
   pedido: []
+  Facil: 0
+  Medio: 0
+  Dificil: 0
+  nivel: 1
 --- !u!4 &153690184
 Transform:
   m_ObjectHideFlags: 0
@@ -389,7 +393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.049852125, y: 0.21627155}
   m_AnchorMax: {x: 0.8872451, y: 0.90000004}
-  m_AnchoredPosition: {x: -447.48004, y: -61.350006}
+  m_AnchoredPosition: {x: -447.48004, y: -61.35}
   m_SizeDelta: {x: -1233.48, y: 238.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &266191224
@@ -765,7 +769,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137ccb9c7207c5f48a29879d5e4e7a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dbManager: {fileID: 542687348}
 --- !u!4 &1110833873
 Transform:
   m_ObjectHideFlags: 0

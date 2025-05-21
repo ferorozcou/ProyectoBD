@@ -326,7 +326,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scenes/Menus
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -336,16 +336,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scenes/Menus
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\maria\Documents\GitHub\ProyectoBD\ProyectoUnity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a0bc0000
-    m_LastClickedID: 48288
-    m_ExpandedIDs: 00000000f8a8000022b9000000ca9a3b
+    m_SelectedIDs: c4a80000
+    m_LastClickedID: 43204
+    m_ExpandedIDs: 0000000000a900002eb9000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -520,9 +520,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: daae0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 1a6effffb470ffff2c72ffff
+      m_ExpandedIDs: 9058ffffd258ffffae5dffff0c5fffff1c60ffff4e61ffff8262ffffdc63ffffb064ffff6666ffff5667ffffcc68ffffc269ffff566fffff9a70ffff1472ffff18e0000020e00000f0e000003ce1000024e2000042e20000fce2000056e30000a0e40000bee4000082e50000cee5000032ea0000eeea0000dcec0000b8ed0000a6ef00009ef00000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1112,9 +1112,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 1.7568982, y: -2.0829036, z: 181.17676}
+    m_Target: {x: 1.5659212, y: -0.92753166, z: 161.22504}
     speed: 2
-    m_Value: {x: 1.7568982, y: -2.0829036, z: 181.17676}
+    m_Value: {x: 1.6804281, y: -0.900624, z: 172.92595}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1164,9 +1164,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.7055645
+    m_Target: 6.167231
     speed: 2
-    m_Value: 6.7055645
+    m_Value: 6.457834
   m_Ortho:
     m_Target: 1
     speed: 2

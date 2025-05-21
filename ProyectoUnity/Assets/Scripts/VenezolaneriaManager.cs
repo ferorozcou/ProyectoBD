@@ -59,7 +59,8 @@ public class VenezolaneriaManager : MonoBehaviour
         "Cada pedido estará conformado de un" + a_o + " o vari" + a_o + "s " + plato + "s, así como una bebida. Arrastra al plato los ingredientes de cada " + plato + " y haz click sobre el botón" +
             " con el icono del fuego cuando esté list" + a_o + ".",
         "Si te equivocas de ingredientes puedes tirarlos a la basura. Sin embargo, recuerda que el desperdicio de alimentos supone una gran pérdida para el restaurante, así que" +
-            " serás penalizado y perderás puntos. Pero bueno, como es tu primer día haremos la excepción y hoy no tendrá consecuencias.",
+            " serás penalizado y perderás puntos.",
+        "Para entregar tod" + a_o + "s l" + a_o + "s " + plato + "s haz click de nuevo sobre el botón del fuego. ¡Ah! y prepáral" + a_o + "s en el orden en el que te los piden.",
         "Cada cliente siempre pedirá la misma bebida. Asegúrate de recordar cuál pide cada uno porque al principio te lo dirán, pero poco a poco dejarán de hacerlo.",
         "Una vez tengas tod" + a_o + "s l" + a_o + "s " + plato + "s y la bebida preparad" + a_o + "s haz click sobre el botón con el tick para entregarl" + a_o + "s.",
         "Eso es todo. ¡Mucha suerte, joven! Presiona enter si estás listo."

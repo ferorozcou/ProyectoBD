@@ -637,6 +637,11 @@ MonoBehaviour:
   - gato
   - koala
   - pato
+  pedido: []
+  nivel: 1
+  Facil: 0
+  Medio: 0
+  Dificil: 0
 --- !u!4 &914781937
 Transform:
   m_ObjectHideFlags: 0
@@ -875,7 +880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137ccb9c7207c5f48a29879d5e4e7a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dbManager: {fileID: 1273599990}
 --- !u!4 &1595779573
 Transform:
   m_ObjectHideFlags: 0
@@ -1203,8 +1207,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
