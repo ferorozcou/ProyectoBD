@@ -21,7 +21,7 @@ public class CocinaManager : MonoBehaviour
 
     private Vector3 posicionOriginal; // Guarda la posición original del plato final
 
-    public bool HaTerminado => contadorClicks >= GameData.numElementos; // Nueva propiedad pública
+    public bool HaTerminado => contadorClicks >= GameData.numElementos; //Bool para revisar si terminó o no el pedido
 
     void Awake() // Hacemos un Singleton de CocinaManager
     {
@@ -46,7 +46,7 @@ public class CocinaManager : MonoBehaviour
 
         if (mensajeErrorUI != null)
         {
-            mensajeErrorUI.SetActive(false); // Oculta el mensaje de error al iniciar
+            mensajeErrorUI.SetActive(false); // Oculta el mensaje de error (vamos el de que has alcanzado el máximo de elementos al iniciar
         }
 
         if (botonEntregar != null)
@@ -89,13 +89,13 @@ public class CocinaManager : MonoBehaviour
             return;
         }
 
-        // Guardar los ingredientes actuales en el plato como un string[]
+        // Guardar los ingredientes actuales en el plato como un array de strings
         List<string> ingredientesDelJugador = new List<string>();
-        ingredientes.RemoveAll(i => i.fueEliminado && !i.estaDentroDelPlato); // Limpieza de ingredientes eliminados fuera del plato
+        ingredientes.RemoveAll(i => i.fueEliminado && !i.estaDentroDelPlato); // Quitamos los ingredientes eliminados
 
         foreach (DragManager ingrediente in ingredientes)
         {
-            if (ingrediente.estaDentroDelPlato) // Usamos flag en lugar de cálculo manual
+            if (ingrediente.estaDentroDelPlato) 
             {
                 ingredientesDelJugador.Add(ingrediente.nombreIngrediente);
                 if (ingredientesDelJugador.Count == 3)
@@ -103,7 +103,6 @@ public class CocinaManager : MonoBehaviour
             }
         }
 
-        // Si no hay suficientes ingredientes, mostrar advertencia y NO guardar, pero continuar con el resto
         if (ingredientesDelJugador.Count < 3)
         {
             Debug.LogWarning("No hay suficientes ingredientes en el plato.");
@@ -115,13 +114,12 @@ public class CocinaManager : MonoBehaviour
             contadorClicks++;
         }
 
-        // SIEMPRE se deben resetear los ingredientes
-        foreach (DragManager ingrediente in ingredientes)
+        foreach (DragManager ingrediente in ingredientes) // Reseteo de todos los ingredientes
         {
             ingrediente.ResetearIngrediente();
         }
 
-        // SIEMPRE se debe mostrar la imagen animada si existe
+        // Si existe mostramos la imagen que animaremos (el plato completado)
         if (nuevaImagenUI != null)
         {
             nuevaImagenUI.SetActive(true);
@@ -134,18 +132,17 @@ public class CocinaManager : MonoBehaviour
 
     private IEnumerator AnimarImagen()
     {
-        // Espera 0.7 segundos sin moverse
-        yield return new WaitForSeconds(0.7f);
 
-        // Posición final hacia arriba fuera del encuadre del canvas
-        Vector3 posicionFinal = posicionOriginal + new Vector3(0, 500, 0);
+        yield return new WaitForSeconds(0.7f); // Espera 0.7 segundos sin moverse
+
+        Vector3 posicionFinal = posicionOriginal + new Vector3(0, 500, 0); // Posición final hacia arriba fuera del encuadre del canvas
 
         float duracion = 0.5f;
         float tiempo = 0;
 
         Vector3 inicio = nuevaImagenUI.transform.localPosition;
 
-        // Movimiento hacia arriba durante 0.5 segundos
+        // Movimiento hacia arriba durante 0.5 segs
         while (tiempo < duracion)
         {
             nuevaImagenUI.transform.localPosition = Vector3.Lerp(inicio, posicionFinal, tiempo / duracion);
@@ -158,7 +155,7 @@ public class CocinaManager : MonoBehaviour
         // Oculta la imagen
         nuevaImagenUI.SetActive(false);
 
-        // Restablece la posición original
+        // Vuelve a la posición original
         nuevaImagenUI.transform.localPosition = posicionOriginal;
     }
 
@@ -183,7 +180,7 @@ public class CocinaManager : MonoBehaviour
     }
 
 
-    // Método para actualizar notaPedido con los elementos actuales de GameData.Elementos
+    // Método para actualizar notaPedido con los elementos del pedido
     public void ActualizarNotaPedido()
     {
         if (notaPedido == null) return;  // Por si no está asignado en inspector
@@ -192,12 +189,12 @@ public class CocinaManager : MonoBehaviour
 
         for (int i = 0; i < GameData.numElementos; i++)
         {
-            // Validar que Elementos[i] no sea null para evitar error
+            // Comprobamos que no sea null para evitar errores
             if (GameData.Elementos[i] != null)
             {
                 sb.Append($"Elemento {i + 1}: ");
                 sb.Append(string.Join(", ", GameData.Elementos[i])); //Une todos los strings del array Elementos separados por coma y espacio
-                sb.Append("\n"); //Salto de línea para el siguiente elemento. 
+                sb.Append("\n"); //Salto de línea para el siguiente elemento
             }
         }
 

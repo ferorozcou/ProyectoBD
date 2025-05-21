@@ -406,10 +406,10 @@ public class DBManager : MonoBehaviour
         IDataReader reader = command.ExecuteReader();
         if (reader.Read())
         {
-            return reader.GetInt32(0); // columna "Cantidad"
+            return reader.GetInt32(0);
         }
 
-        // Si no se encuentra, devuelve 0 (o puedes lanzar una excepción si prefieres)
+        // Si no se encuentra, devuelve 0
         return 0;
     }
     public int ObtenerPuntosRequeridosPorNivel(int idNivel)

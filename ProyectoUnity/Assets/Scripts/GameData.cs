@@ -36,7 +36,7 @@ public static class GameData
     {
         try
         {
-            int tiempo = DBManager.Instance.ObtenerTiempoPorNivel(Nivel); // <-- Usa nivel actual
+            int tiempo = DBManager.Instance.ObtenerTiempoPorNivel(Nivel); // Usa nivel actual
             return tiempo;
         }
         catch (System.Exception e)
@@ -45,8 +45,6 @@ public static class GameData
             return 120f;
         }
     }
-
-
 
     // Método para actualizar el número de elementos según la dificultad
     public static void ActualizarNumElementos()

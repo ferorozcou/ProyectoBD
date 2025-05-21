@@ -10,7 +10,7 @@ public class PedidoGenerator : MonoBehaviour
 
     IEnumerator Start()
     {
-        yield return null; // Asegura que DBManager haya hecho Start()
+        yield return null; // Asegura que DBManager haya hecho Start
 
         if (DBManager.Instance == null)
         {
@@ -18,7 +18,6 @@ public class PedidoGenerator : MonoBehaviour
             yield break;
         }
 
-        // Ahora puedes llamar GetNumeroElementosPorDificultad...
     }
     public string[] GenerarPedido(int dif, int rest, string cliente, int nivel)
     {
@@ -30,7 +29,7 @@ public class PedidoGenerator : MonoBehaviour
             return new string[] { "Error: no se pudo generar el pedido porque DBManager no está disponible." };
         }
 
-        // Selección de restaurante y dificultad a partir de los índices
+        // Seleccionamos restaurante y dificultad a partir de los índices
         string[] restaurantes = { "Venezolano", "Mexicano", "Español" };
         string[] dificultades = { "Fácil", "Medio", "Difícil" };
 
@@ -58,7 +57,6 @@ public class PedidoGenerator : MonoBehaviour
 
         string[] Pedido = new string[numElementos + 3];
 
-        // Primera línea descriptiva según restaurante
         if (restaurante == "Venezolano")
         {
             Pedido[0] = $"Quiero un pedido con {numElementos} arepa(s).";

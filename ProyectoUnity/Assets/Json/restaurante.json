@@ -1,0 +1,229 @@
+{
+    "pedidos": [
+        {
+            "Id": 56,
+            "Tipo": "Medio",
+            "Bebida": "Ice Tea",
+            "Restaurante": "Español",
+            "Nivel": 1,
+            "PuntosObtenidos": 0
+        }
+    ],
+    "ingredientes": [
+        {
+            "Nombre": "Tortilla",
+            "Tipo": "Base",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Cebolla",
+            "Tipo": "Relleno",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Chorizo",
+            "Tipo": "Relleno",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Espinaca",
+            "Tipo": "Relleno",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Bacalao",
+            "Tipo": "Relleno",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Jamón",
+            "Tipo": "Relleno",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Alioli",
+            "Tipo": "Extra",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Mayonesa",
+            "Tipo": "Extra",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Ketchup",
+            "Tipo": "Extra",
+            "Restaurante": "Español"
+        },
+        {
+            "Nombre": "Arepas",
+            "Tipo": "Base",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Reina Pepiada",
+            "Tipo": "Relleno",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Queso de mano",
+            "Tipo": "Relleno",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Pelúa",
+            "Tipo": "Relleno",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Dominó",
+            "Tipo": "Relleno",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Catira",
+            "Tipo": "Relleno",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Perico",
+            "Tipo": "Relleno",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Salsa picante",
+            "Tipo": "Toppings",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Salsa de ajo",
+            "Tipo": "Toppings",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Guasacaca",
+            "Tipo": "Toppings",
+            "Restaurante": "Venezolano"
+        },
+        {
+            "Nombre": "Sopes",
+            "Tipo": "Base",
+            "Restaurante": "Mexicano"
+        },
+        {
+            "Nombre": "Frijoles blancos",
+            "Tipo": "Relleno",
+            "Restaurante": "Mexicano"
+        },
+        {
+            "Nombre": "Frijoles negros",
+            "Tipo": "Relleno",
+            "Restaurante": "Mexicano"
+        },
+        {
+            "Nombre": "Pollo",
+            "Tipo": "Toppings",
+            "Restaurante": "Mexicano"
+        },
+        {
+            "Nombre": "Chorizo",
+            "Tipo": "Toppings",
+            "Restaurante": "Mexicano"
+        },
+        {
+            "Nombre": "Crema",
+            "Tipo": "Toppings",
+            "Restaurante": "Mexicano"
+        },
+        {
+            "Nombre": "Queso",
+            "Tipo": "Toppings",
+            "Restaurante": "Mexicano"
+        },
+        {
+            "Nombre": "Lechuga",
+            "Tipo": "Toppings",
+            "Restaurante": "Mexicano"
+        },
+        {
+            "Nombre": "Aguacate",
+            "Tipo": "Toppings",
+            "Restaurante": "Mexicano"
+        }
+    ],
+    "clientes": [
+        {
+            "Animal": "Pato",
+            "FraseFacil": "Y una co-quack-cola por favor",
+            "FraseDificil": "Quack, Quack, ya lo sabes"
+        },
+        {
+            "Animal": "Capibara",
+            "FraseFacil": "Y un agua por favor",
+            "FraseDificil": "Ya te la sabes"
+        },
+        {
+            "Animal": "Gato",
+            "FraseFacil": "Y un Sprite, miau, miau",
+            "FraseDificil": "Miau, la de siempre"
+        },
+        {
+            "Animal": "Conejo",
+            "FraseFacil": "Y me pones un zumo, tío",
+            "FraseDificil": "Ponme lo de siempre"
+        },
+        {
+            "Animal": "Koala",
+            "FraseFacil": "Y un Ice… Tea",
+            "FraseDificil": "Zzzz"
+        }
+    ],
+    "tiposPedidos": [
+        {
+            "Dificultad": "Fácil",
+            "NumeroElementos": 1,
+            "PuntosPerfecto": 120,
+            "Puntos1Error": 100,
+            "Puntos2Errores": 50,
+            "Puntos3Errores": 0
+        },
+        {
+            "Dificultad": "Medio",
+            "NumeroElementos": 3,
+            "PuntosPerfecto": 120,
+            "Puntos1Error": 100,
+            "Puntos2Errores": 70,
+            "Puntos3Errores": 20
+        },
+        {
+            "Dificultad": "Difícil",
+            "NumeroElementos": 5,
+            "PuntosPerfecto": 130,
+            "Puntos1Error": 100,
+            "Puntos2Errores": 80,
+            "Puntos3Errores": 50
+        }
+    ],
+    "bebidas": [
+        {
+            "Cliente": "Capibara",
+            "Nombre": "Agua"
+        },
+        {
+            "Cliente": "Pato",
+            "Nombre": "Cocacola"
+        },
+        {
+            "Cliente": "Gato",
+            "Nombre": "Sprite"
+        },
+        {
+            "Cliente": "Conejo",
+            "Nombre": "Zumo"
+        },
+        {
+            "Cliente": "Koala",
+            "Nombre": "Ice Tea"
+        }
+    ]
+}

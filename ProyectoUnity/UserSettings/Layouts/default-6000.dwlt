@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 95
+  controlID: 93
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -326,7 +326,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Audio
+    - Assets/Scripts
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -336,16 +336,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Audio
+  - Assets/Scripts
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\maria\Documents\GitHub\ProyectoBD\ProyectoUnity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 40cc0000
-    m_LastClickedID: 52288
-    m_ExpandedIDs: 00000000f0a800001ab9000000ca9a3b
+    m_SelectedIDs: a0bc0000
+    m_LastClickedID: 48288
+    m_ExpandedIDs: 00000000f8a8000022b9000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -520,9 +520,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c26dffff
-      m_LastClickedID: -37438
-      m_ExpandedIDs: ce70ffff4672ffff20c30000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 1a6effffb470ffff2c72ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1112,9 +1112,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -0.7644323, y: 0.17783362, z: 176.12543}
+    m_Target: {x: 1.7568982, y: -2.0829036, z: 181.17676}
     speed: 2
-    m_Value: {x: -0.81434244, y: 0.23562431, z: 164.7774}
+    m_Value: {x: 1.7568982, y: -2.0829036, z: 181.17676}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1164,9 +1164,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.5881495
+    m_Target: 6.7055645
     speed: 2
-    m_Value: 6.3044496
+    m_Value: 6.7055645
   m_Ortho:
     m_Target: 1
     speed: 2

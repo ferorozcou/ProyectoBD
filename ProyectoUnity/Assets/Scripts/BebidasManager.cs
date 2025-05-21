@@ -64,7 +64,7 @@ public class BebidasManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             if (rectTransform.localScale == escalaInicial)
             {
-                rectTransform.localScale += Vector3.one * 0.9f; // Aumentamos su escala en 0.7
+                rectTransform.localScale += Vector3.one * 0.9f; // Aumentamos su escala en 0.9
             }
 
         }

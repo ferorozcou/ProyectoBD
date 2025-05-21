@@ -13,7 +13,7 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public RectTransform transformPapelera; //El RectTransform del objeto papelera
     public Canvas canvas; //Objeto para el canvas que necesitamos para convertir las coordenadas correctamente
 
-    public string nombreIngrediente; //ASIGNAMOS DESDE EL INSPECTOR PARA PODER COMPARARLO CON LOS DE LOS CLIENTES
+    public string nombreIngrediente; //Variable para los nombres de los ingredientes (así nos aseguramos de que coincida con los de la base de datos)
 
     public bool estaDentroDelPlato { get; private set; }
 
@@ -42,7 +42,7 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void ResetearIngrediente()
     {
         fueEliminado = false;
-        estaDentroDelPlato = false; // Reseteamos el flag cada vez
+        estaDentroDelPlato = false; //Ya no está dentro del plato
         rectTransform.position = posicionOriginal;
         rectTransform.localScale = escalaInicial;
     }
@@ -51,7 +51,7 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         if (CocinaManager.Instance != null && CocinaManager.Instance.HaTerminado)
         {
-            Debug.Log("Ya no se puede arrastrar: todos los platos preparados.");
+            Debug.Log("Ya no se puede arrastrar.");
             return;
         }
 
@@ -79,7 +79,7 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         //Si el ratón está sobre la papelera
         if (RectTransformUtility.RectangleContainsScreenPoint(transformPapelera, Input.mousePosition, canvas.worldCamera))
         {
-            GameData.puntosPapelera -= 15; //FALTA PONER EL IF POR NIVELES
+            GameData.puntosPapelera -= 15;
             Debug.Log("Ingrediente tirado a la papelera. PuntosPapelera = " + GameData.puntosPapelera);
             fueEliminado = true; // Bool que regula si eliminamos o no el ingrediente
             estaDentroDelPlato = false; // Ya no está en el plato
@@ -90,14 +90,14 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         else if (EstaCompletamenteDentro(rectTransform, transformPlato))
         {
             Debug.Log("Ingrediente soltado completamente dentro del plato");
-            posicionAnterior = rectTransform.position; //Actualizamos la posición válida más reciente
+            posicionAnterior = rectTransform.position; //Actualizamos la última posición válida
             if (rectTransform.localScale == escalaInicial)
             {
-                rectTransform.localScale += Vector3.one * 0.7f; // Aumentamos su escala en 0.7
+                rectTransform.localScale += Vector3.one * 0.7f; //Aumentamos su escala en 0.7
             }
 
             estaDentroDelPlato = true;
-            fueEliminado = false; // REHABILITAMOS el ingrediente si vuelve al plato
+            fueEliminado = false; //Para que el ingrediente se vuelva a habilitar si lo arrastramos otra vez al plato
             CocinaManager.Instance.RegistrarIngrediente(this); // Volvemos a agregarlo si no está
         }
         else //Si no se suelta sobre la papelera o el plato vuelve a su última posición válida
