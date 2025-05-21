@@ -12,9 +12,12 @@ public class VenClientesManager : MonoBehaviour
     public string[] nombreCliente = { "Capibara", "Conejo", "Gato", "Koala", "Pato" };
     int indice = -1;
     int dif = 1;
-    int nivel = 1;
     public string[] pedido;
-    
+    public int Facil;
+    public int Medio;
+    public int Dificil;
+    public int nivel = GameData.Nivel;
+
     void EscribirPedido()
     {
         string v = pedido[indice];
@@ -24,6 +27,7 @@ public class VenClientesManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        var dbManager = DBManager.Instance;
         animales = new GameObject[] { capibara, conejo, gato, koala, pato };
         capibara.SetActive(false);
         conejo.SetActive(false);
@@ -37,7 +41,39 @@ public class VenClientesManager : MonoBehaviour
         textoPedido.text = $"Hola soy {nombreCliente[clientenum]}";
         pedido = GeneradorPedidos.GenerarPedido(dif, 0, nombreCliente[clientenum],nivel);
 
+        if (nivel == 1)
+        {
+            Facil = dbManager.GetCantidadPedidosPorNivelYTipo(GameData.Nivel, "Fácil");
+            if (GameData.NumPediddoActual <= Facil)
+            {
+                pedido = GeneradorPedidos.GenerarPedido(0, 0, nombreCliente[clientenum], nivel);
+            }
+            else
+            {
+                pedido = GeneradorPedidos.GenerarPedido(1, 0, nombreCliente[clientenum], nivel);
+            }
+        }
+        else
+        {
+            Facil = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Fácil");
+            Medio = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Medio");
+            Dificil = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Difícil");
+            if (GameData.NumPediddoActual <= Facil)
+            {
+                pedido = GeneradorPedidos.GenerarPedido(0, 0, nombreCliente[clientenum], nivel);
+            }
+            else if (GameData.NumPediddoActual <= Facil + Medio)
+            {
+                pedido = GeneradorPedidos.GenerarPedido(1, 0, nombreCliente[clientenum], nivel);
+            }
+            else
+            {
+                pedido = GeneradorPedidos.GenerarPedido(2, 0, nombreCliente[clientenum], nivel);
+            }
+        }
     }
+
+
 
     // Update is called once per frame
     void Update()

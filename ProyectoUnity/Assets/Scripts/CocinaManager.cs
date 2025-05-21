@@ -1,3 +1,4 @@
+// === CocinaManager.cs ===
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,13 @@ public class CocinaManager : MonoBehaviour
     public GameObject nuevaImagenUI; // Asigna esta imagen desde el inspector
     public GameObject mensajeErrorUI; // Imagen que se muestra si se supera el límite de clics
     public GameObject Ayuda, BotonCerrar; // Referencias para mostrar y ocultar la ayuda
+    public GameObject botonEntregar; // Botón de entregar asignado desde el inspector
 
     private int contadorClicks = 0; // Lleva el conteo de cuántas veces se ha hecho clic
 
     private Vector3 posicionOriginal; // Guarda la posición original del plato final
+
+    public bool HaTerminado => contadorClicks >= GameData.numElementos; // Nueva propiedad pública
 
     void Awake() // Hacemos un Singleton de CocinaManager
     {
@@ -43,15 +47,16 @@ public class CocinaManager : MonoBehaviour
         {
             mensajeErrorUI.SetActive(false); // Oculta el mensaje de error al iniciar
         }
+
+        if (botonEntregar != null)
+        {
+            botonEntregar.SetActive(false); // Oculta el botón al iniciar
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Debug.Log("Se presionó la tecla B");
-            evaluadorPuntos.EvaluarPedidos();
-        }
+       
     }
 
     public void RegistrarIngrediente(DragManager ingrediente) // Agregamos los ingredientes del plato a la lista
@@ -67,45 +72,46 @@ public class CocinaManager : MonoBehaviour
 
     public void ResetearTodo()
     {
-        bool puedeGuardar = contadorClicks < GameData.numElementos;
-        int clicks = 0;
-
-        // Si ya se alcanzó el límite, mostramos el mensaje de error, pero igual continuamos con el resto del reseteo
-        if (!puedeGuardar && mensajeErrorUI != null)
+        if (HaTerminado)
         {
-            mensajeErrorUI.SetActive(true);
-            mensajeErrorUI.transform.SetAsLastSibling(); // Lo ponemos al frente de todo
+            if (mensajeErrorUI != null)
+            {
+                mensajeErrorUI.SetActive(true);
+                mensajeErrorUI.transform.SetAsLastSibling(); // Lo ponemos al frente de todo
+            }
+
+            if (botonEntregar != null)
+            {
+                botonEntregar.SetActive(true); // Mostramos el botón de entregar
+                botonEntregar.transform.SetAsLastSibling(); // Lo ponemos por encima del mensaje de error
+            }
+            return;
         }
 
-        if (puedeGuardar)
+        // Guardar los ingredientes actuales en el plato como un string[]
+        List<string> ingredientesDelJugador = new List<string>();
+        ingredientes.RemoveAll(i => i.fueEliminado && !i.estaDentroDelPlato); // Limpieza de ingredientes eliminados fuera del plato
+
+        foreach (DragManager ingrediente in ingredientes)
         {
-            // Guardar los ingredientes actuales en el plato como un string[]
-            List<string> ingredientesDelJugador = new List<string>();
-            ingredientes.RemoveAll(i => i.fueEliminado && !i.estaDentroDelPlato); // Limpieza de ingredientes eliminados fuera del plato
-
-            foreach (DragManager ingrediente in ingredientes)
+            if (ingrediente.estaDentroDelPlato) // Usamos flag en lugar de cálculo manual
             {
-                if (ingrediente.estaDentroDelPlato) // Usamos flag en lugar de cálculo manual
-                {
-                    ingredientesDelJugador.Add(ingrediente.nombreIngrediente);
-                    if (ingredientesDelJugador.Count == 3)
-                        break;
-                }
+                ingredientesDelJugador.Add(ingrediente.nombreIngrediente);
+                if (ingredientesDelJugador.Count == 3)
+                    break;
             }
+        }
 
-            // Si no hay suficientes ingredientes, mostrar advertencia y NO guardar, pero continuar con el resto
-            if (ingredientesDelJugador.Count < 3)
-            {
-                Debug.LogWarning("No hay suficientes ingredientes en el plato.");
-            }
-            else
-            {
-                GameData.ElementosJugador[contadorClicks] = ingredientesDelJugador.ToArray();
-                Debug.Log($"Guardado en ElementosJugador[{contadorClicks}]: {string.Join(", ", ingredientesDelJugador)}");
-                contadorClicks++;
-            }
-
-            clicks++;
+        // Si no hay suficientes ingredientes, mostrar advertencia y NO guardar, pero continuar con el resto
+        if (ingredientesDelJugador.Count < 3)
+        {
+            Debug.LogWarning("No hay suficientes ingredientes en el plato.");
+        }
+        else
+        {
+            GameData.ElementosJugador[contadorClicks] = ingredientesDelJugador.ToArray();
+            Debug.Log($"Guardado en ElementosJugador[{contadorClicks}]: {string.Join(", ", ingredientesDelJugador)}");
+            contadorClicks++;
         }
 
         // SIEMPRE se deben resetear los ingredientes
@@ -170,6 +176,7 @@ public class CocinaManager : MonoBehaviour
 
     public void CambiarABebidas()
     {
+        evaluadorPuntos.EvaluarPedidos();
         SceneManager.LoadScene(8); // Puedes cambiar a 8 si usas la escena antigua
     }
 }

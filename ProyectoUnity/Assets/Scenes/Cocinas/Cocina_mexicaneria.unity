@@ -246,6 +246,7 @@ MonoBehaviour:
   mensajeErrorUI: {fileID: 695750780}
   Ayuda: {fileID: 1401214025}
   BotonCerrar: {fileID: 409926654}
+  botonEntregar: {fileID: 1195717198}
 --- !u!4 &54742612
 Transform:
   m_ObjectHideFlags: 0
@@ -976,10 +977,10 @@ RectTransform:
   - {fileID: 1477539427}
   m_Father: {fileID: 1612968017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.24125001, y: 0.24642158}
-  m_AnchorMax: {x: 0.7611182, y: 0.7641186}
-  m_AnchoredPosition: {x: -1.0001831, y: -2}
-  m_SizeDelta: {x: -1.6599731, y: 0.3500061}
+  m_AnchorMin: {x: 0.00625, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -4.5700073, y: -0.6200104}
+  m_SizeDelta: {x: 7.51001, y: 1.5700073}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695750782
 MonoBehaviour:
@@ -1001,7 +1002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8067714383609273197, guid: e68174836ed0117438ffe1d49f6750fa, type: 3}
+  m_Sprite: {fileID: -4120324037158393618, guid: ee5a518ffce88d84f87a00bc6329a5dc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -49,6 +49,12 @@ public class DragManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (CocinaManager.Instance != null && CocinaManager.Instance.HaTerminado)
+        {
+            Debug.Log("Ya no se puede arrastrar: todos los platos preparados.");
+            return;
+        }
+
         transform.SetAsLastSibling(); //Mueve el objeto a la capa de delante del todo en el canvas
         canvasGroup.blocksRaycasts = false; //Permitimos que el plato o papelera reciban eventos de click para detectar si hemos soltado el ratón
         posicionAnterior = rectTransform.position; //Guardamos la última posición válida antes de arrastrar

@@ -7,16 +7,19 @@ using UnityEngine.UI;
 
 public class MexClientesManager : MonoBehaviour
 {
+    
     public GameObject capibara, conejo, gato, koala, pato;
     public GameObject[] animales;
     public PedidoGenerator GeneradorPedidos;
     public TextMeshProUGUI textoPedido;
     public string[] nombreCliente = { "Capibara", "Conejo", "Gato", "Koala", "Pato" };
-    int indice = -1;
-    int dif = 2;
+    public int indice = -1;
+    public int dif = 2;
     public string[] pedido;
-    int nivel = 1;
-
+    public int Facil;
+    public int Medio;
+    public int Dificil;
+    public int nivel = GameData.Nivel;
     void EscribirPedido()
     {
         string v = pedido[indice];
@@ -26,6 +29,7 @@ public class MexClientesManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        var dbManager = DBManager.Instance;
         animales = new GameObject[] { capibara, conejo, gato, koala, pato };
         capibara.SetActive(false);
         conejo.SetActive(false);
@@ -39,7 +43,39 @@ public class MexClientesManager : MonoBehaviour
         textoPedido.text = $"Hola soy {nombreCliente[clientenum]}";
         pedido = GeneradorPedidos.GenerarPedido(dif, 1, nombreCliente[clientenum],nivel);
 
+
+        if (nivel == 1)
+        {
+            Facil = dbManager.GetCantidadPedidosPorNivelYTipo(GameData.Nivel, "Fácil");
+            if (GameData.NumPediddoActual <= Facil)
+            {
+                pedido = GeneradorPedidos.GenerarPedido(0, 1,nombreCliente[clientenum], nivel);
+            }
+            else
+            {
+                pedido = GeneradorPedidos.GenerarPedido(1, 1, nombreCliente[clientenum], nivel);
+            }
+        }
+        else
+        {
+            Facil = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Fácil");
+            Medio = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Medio");
+            Dificil = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Difícil");
+            if (GameData.NumPediddoActual <= Facil)
+            {
+                pedido = GeneradorPedidos.GenerarPedido(0, 1, nombreCliente[clientenum], nivel);
+            }
+            else if (GameData.NumPediddoActual <= Facil + Medio)
+            {
+                pedido = GeneradorPedidos.GenerarPedido(1, 1, nombreCliente[clientenum], nivel);
+            }
+            else
+            {
+                pedido = GeneradorPedidos.GenerarPedido(2, 1, nombreCliente[clientenum], nivel);
+            }
+        }
     }
+
 
     // Update is called once per frame
     void Update()

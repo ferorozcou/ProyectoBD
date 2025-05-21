@@ -47,6 +47,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Menus/Ayuda.unity
     guid: 3c4bb255857d29249b77cabe0578096d
+  - enabled: 1
+    path: Assets/Scenes/Menus/Bien hecho.unity
+    guid: 82ff984ccd647ed419ff52c3a5fec346
+  - enabled: 1
+    path: Assets/Scenes/Menus/Recompensas.unity
+    guid: 075eb084f33e6ec4aaae71aa9e467db0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -11,9 +11,7 @@ public class RecibirPedidoManager : MonoBehaviour
     public GameObject[] animales;
     public TextMeshProUGUI textoMensaje;
     public string[] nombreCliente = { "Capibara", "Conejo", "Gato", "Koala", "Pato" };
-    int dif = 1;
     public string[] pedido;
-    int nivel = 1;
     private string[] mensaje;
     private string bienOmal;
     private int puntos;
@@ -149,8 +147,8 @@ public class RecibirPedidoManager : MonoBehaviour
         {
             bienOmal = "Mmmm, creo que podría estar mejor";
         }
-        
 
+        GameData.puntosNivel = GameData.puntosNivel + puntos;
         mensaje = new string[]{ //Cadena de strings con las instrucciones.
             "Wow que bueno luce todo, veamos que tal está",
         "...",
@@ -199,7 +197,21 @@ public class RecibirPedidoManager : MonoBehaviour
     }
     void OtroPedido()
     {
-        SceneManager.LoadScene(escena);
+        var db = DBManager.Instance;
+        GameData.NumPediddoActual++;
+        if (GameData.NumPediddoActual > db.ObtenerPedidosPorNivel(GameData.Nivel))
+        {
+            if (GameData.Nivel == 3)
+            {
+                if (GameData.puntosNivel >= db.ObtenerPuntosRequeridosPorNivel(GameData.Nivel))
+                {
+                    SceneManager.LoadScene(11);
+                }
+                else SceneManager.LoadScene(10);
+            }
+            else SceneManager.LoadScene(10);
+        }
+        else { SceneManager.LoadScene(escena); }
     }
 
 }

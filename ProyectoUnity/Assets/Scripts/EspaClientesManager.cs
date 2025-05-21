@@ -14,10 +14,11 @@ public class EspaClientesManager : MonoBehaviour
     public TextMeshProUGUI textoPedido;
     public string[] nombreCliente = { "Capibara", "Conejo", "Gato", "Koala", "Pato" };
     int indice = -1;
-    int dif = 1;
     public string[] pedido;
-    int nivel = 1;
-
+    public int nivel = GameData.Nivel;
+    public int Facil;
+    public int Medio;
+    public int Dificil;
     void EscribirPedido()
     {
         string v = pedido[indice];
@@ -34,7 +35,7 @@ public class EspaClientesManager : MonoBehaviour
             Debug.LogError("DBManager.Instance no está disponible");
             yield break;
         }
-
+        var dbManager = DBManager.Instance;
         animales = new GameObject[] { capibara, conejo, gato, koala, pato };
         capibara.SetActive(false);
         conejo.SetActive(false);
@@ -49,7 +50,35 @@ public class EspaClientesManager : MonoBehaviour
         GameData.clienteNum = clientenum;
         textoPedido.text = $"Hola soy {nombreCliente[clientenum]}";
 
-        pedido = GeneradorPedidos.GenerarPedido(dif, 2, nombreCliente[clientenum], nivel);
+        if (nivel == 1)
+        {
+            Facil = dbManager.GetCantidadPedidosPorNivelYTipo(GameData.Nivel, "Fácil");
+            if (GameData.NumPediddoActual<= Facil)
+            {
+                pedido = GeneradorPedidos.GenerarPedido(0, 2, nombreCliente[clientenum], nivel);
+            }
+            else
+            {
+                pedido= GeneradorPedidos.GenerarPedido(1, 2, nombreCliente[clientenum], nivel);
+            }
+        }
+        else
+        {
+            Facil = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Fácil");
+            Medio = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Medio");
+            Dificil = dbManager.GetCantidadPedidosPorNivelYTipo(nivel, "Difícil");
+            if (GameData.NumPediddoActual <= Facil)
+            {
+                pedido = GeneradorPedidos.GenerarPedido(0, 2, nombreCliente[clientenum], nivel);
+            }
+            else if(GameData.NumPediddoActual <= Facil + Medio){
+                pedido = GeneradorPedidos.GenerarPedido(1, 2, nombreCliente[clientenum], nivel);
+            }
+            else
+            {
+                pedido = GeneradorPedidos.GenerarPedido(2, 2, nombreCliente[clientenum], nivel);
+            }
+        }
     }
 
     // Update is called once per frame

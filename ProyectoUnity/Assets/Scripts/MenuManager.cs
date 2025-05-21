@@ -3,7 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-   
+    private void Start()
+    {
+        GameData.Nivel = 1;
+        GameData.NumPediddoActual = 1;
+        GameData.puntosNivel = 0;
+        GameData.numRestaurante = 1;
+    }
+
     public void CargarNivel(int indexEscena)
     {
         GameData.Nivel = 1;

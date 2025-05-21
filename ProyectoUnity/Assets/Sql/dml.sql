@@ -48,9 +48,9 @@ INSERT INTO Ingredientes (Id, Nombre, Tipo, Restaurante) VALUES
     (28, 'Aguacate', 'Toppings', 'Mexicano');
 
 INSERT INTO Niveles (Id, NumeroPedidos, PuntosRequeridos, TiempoSegundos) VALUES
-(1, 5, 500, 120),
-(2, 7, 700, 120),
-(3, 10, 1000, 130);
+(1, 5, 500, 180),
+(2, 7, 700, 270),
+(3, 10, 1000, 420);
 
 INSERT INTO TiposPedidos (Dificultad, NumeroElementos, PuntosPerfecto, Puntos1Error, Puntos2Errores, Puntos3Errores) VALUES
 ('Fácil', 1, 120, 100, 50, 0),

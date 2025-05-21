@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro; // Permite usar texto TextMeshPro
 using UnityEngine.SceneManagement;
 
 public class LevelTimer : MonoBehaviour
 {
-    public static LevelTimer instancia; // Declara un singleton (una única instancia de clase, global) para se usado entre escenas.
+    public static LevelTimer instancia; // Declara un singleton (una Ãºnica instancia de clase, global) para se usado entre escenas.
 
     public float tiempoLimite = 120f; // Valor por defecto 
     private float tiempoRestante;
@@ -24,7 +24,7 @@ public class LevelTimer : MonoBehaviour
             return;
         }
 
-        // Si no existe, este será la instancia global
+        // Si no existe, este serÃ¡ la instancia global
         instancia = this;
 
         DontDestroyOnLoad(gameObject); // No se destruye entre escenas
@@ -43,47 +43,68 @@ public class LevelTimer : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded; // Se desuscribe al destruirse
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode) // Cuando se carga una escena nueva...
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Buscamos el texto del temporizador de la nueva escena
+        string escenaActual = scene.name;
+
+        // Reasigna UI si hace falta
         if (textoTemporizador == null)
             textoTemporizador = GameObject.Find("TextoTemporizador")?.GetComponent<TextMeshProUGUI>();
 
-        // Buscamos el mensaje que indica que se ha acabado el tiempo
         if (mensajeTiempoTerminado == null)
             mensajeTiempoTerminado = GameObject.Find("MensajeTiempoAcabado");
 
-        // Reiniciamos el temporizador y ocultamos el mensaje cada vez que se carga una escena
-        InicializarTiempo();
+        bool esEscenaCocina = escenaActual.Contains("Cocina");
 
-        // Forzar actualización al cargar nueva escena
+        if (esEscenaCocina)
+        {
+            bool cambioDeNivel = GameData.Nivel != GameData.ultimoNivelCocina;
+            bool cambioDeRestaurante = GameData.numRestaurante != GameData.ultimoRestauranteCocina;
+
+            if (cambioDeNivel || cambioDeRestaurante)
+            {
+                GameData.tiempoRestante = -1f; // Forzar reinicio de tiempo
+            }
+
+            // Guardar los valores actuales como referencia para la prÃ³xima vez
+            GameData.ultimoNivelCocina = GameData.Nivel;
+            GameData.ultimoRestauranteCocina = GameData.numRestaurante;
+        }
+
+        GameData.ultimaEscena = escenaActual;
+
+        InicializarTiempo();
         ActualizarTextoTemporizador();
     }
+
+
 
     void InicializarTiempo()
     {
-        // Si ya había tiempo guardado, se usa ese. Si no, se obtiene uno nuevo
-        tiempoRestante = (GameData.tiempoRestante >= 0.5f) // <-- agregado: protección contra valores muy bajos
-            ? GameData.tiempoRestante
-            : GameData.ObtenerTiempoLimite();
+        if (GameData.tiempoRestante >= 0.5f)
+        {
+            tiempoRestante = GameData.tiempoRestante;
+        }
+        else
+        {
+            tiempoRestante = GameData.ObtenerTiempoLimite();
+            GameData.tiempoRestante = tiempoRestante;
+        }
 
-        GameData.tiempoRestante = tiempoRestante; // Se guarda el tiempo en gameData
+        tiempoAgotado = false;
 
-        tiempoAgotado = false; // <-- agregado: reiniciamos flag de agotado
-
-        // Ocultamos mensaje de tiempo acabado
         if (mensajeTiempoTerminado != null)
             mensajeTiempoTerminado.SetActive(false);
 
-        //Muestra el tiempo en pantalla
         ActualizarTextoTemporizador();
     }
+
 
     void Update()
     {
         if (tiempoRestante > 0 && !tiempoAgotado) // Si el tiempo no se ha agotado...
         {
-            tiempoRestante -= Time.deltaTime; // Restamos el tiempo que pasó desde el último frame
+            tiempoRestante -= Time.deltaTime; // Restamos el tiempo que pasÃ³ desde el Ãºltimo frame
 
             GameData.tiempoRestante = tiempoRestante; // Actualiza GameData con el nuevo tiempo
 
@@ -92,7 +113,7 @@ public class LevelTimer : MonoBehaviour
             // Con este if evitamos mostrar el tiempo cada frame, si no cada segundo.
             if (segundoActual != ultimoSegundoMostrado)
             {
-                Debug.Log("Tiempo restante: " + segundoActual);
+
                 ultimoSegundoMostrado = segundoActual; // Guardamos este segundo para no repetir
                 ActualizarTextoTemporizador(); // Actualiza el texto temporizador.
             }
@@ -108,7 +129,7 @@ public class LevelTimer : MonoBehaviour
     void TiempoTerminado() // Muestra el mensaje de que se acabo el tiempo 
     {
         tiempoAgotado = true;
-        Debug.Log("¡Tiempo terminado!");
+        Debug.Log("Â¡Tiempo terminado!");
 
         if (mensajeTiempoTerminado != null)
             mensajeTiempoTerminado.SetActive(true); // Se activa el mensaje

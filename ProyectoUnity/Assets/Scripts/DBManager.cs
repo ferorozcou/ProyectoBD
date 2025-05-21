@@ -388,6 +388,68 @@ public class DBManager : MonoBehaviour
         }
 
     }
+    public int GetCantidadPedidosPorNivelYTipo(int nivel, string tipoPedido)
+    {
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = "SELECT Cantidad FROM TiposPedidosNiveles WHERE IdNivel = @nivel AND TipoPedido = @tipoPedido";
+
+        var paramNivel = command.CreateParameter();
+        paramNivel.ParameterName = "@nivel";
+        paramNivel.Value = nivel;
+        command.Parameters.Add(paramNivel);
+
+        var paramTipo = command.CreateParameter();
+        paramTipo.ParameterName = "@tipoPedido";
+        paramTipo.Value = tipoPedido;
+        command.Parameters.Add(paramTipo);
+
+        IDataReader reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            return reader.GetInt32(0); // columna "Cantidad"
+        }
+
+        // Si no se encuentra, devuelve 0 (o puedes lanzar una excepción si prefieres)
+        return 0;
+    }
+    public int ObtenerPuntosRequeridosPorNivel(int idNivel)
+    {
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = "SELECT PuntosRequeridos FROM Niveles WHERE Id = @idNivel";
+
+        var param = command.CreateParameter();
+        param.ParameterName = "@idNivel";
+        param.Value = idNivel;
+        command.Parameters.Add(param);
+
+        IDataReader reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            return reader.GetInt32(0); 
+        }
+
+        Debug.LogWarning($"No se encontraron puntos requeridos para el nivel {idNivel}");
+        return -1; 
+    }
+    public int ObtenerPedidosPorNivel(int idNivel)
+    {
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = "SELECT NumeroPedidos FROM Niveles WHERE Id = @idNivel";
+
+        var param = command.CreateParameter();
+        param.ParameterName = "@idNivel";
+        param.Value = idNivel;
+        command.Parameters.Add(param);
+
+        IDataReader reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            return reader.GetInt32(0);
+        }
+
+        Debug.LogWarning($"No se encontraron puntos requeridos para el nivel {idNivel}");
+        return -1;
+    }
     public int ObtenerIdPedido()
     {
         using (IDbCommand command = dbConnection.CreateCommand())
@@ -405,6 +467,31 @@ public class DBManager : MonoBehaviour
             }
         }
     }
+
+    // Tiempo en DB Manager
+    public int ObtenerTiempoPorNivel(int nivelId)
+    {
+        using (IDbCommand command = dbConnection.CreateCommand())
+        {
+            command.CommandText = "SELECT TiempoSegundos FROM Niveles WHERE Id = @nivelId";
+            var param = command.CreateParameter();
+            param.ParameterName = "@nivelId";
+            param.Value = nivelId;
+            command.Parameters.Add(param);
+
+            using (IDataReader reader = command.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    return reader.GetInt32(0);
+                }
+            }
+        }
+
+        Debug.LogWarning("No se encontró tiempo para el nivel " + nivelId);
+        return 120; // Por defecto si no se encuentra
+    }
+
 }
 
 

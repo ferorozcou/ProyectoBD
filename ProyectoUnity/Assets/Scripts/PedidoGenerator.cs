@@ -23,6 +23,7 @@ public class PedidoGenerator : MonoBehaviour
     public string[] GenerarPedido(int dif, int rest, string cliente, int nivel)
     {
         var dbManager = DBManager.Instance;
+
         if (dbManager == null)
         {
             Debug.LogError("DBManager no asignado en PedidoGenerator.");
