@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cuaderno_0: -8679596953879572040
+      Cuaderno_1: -5268710909556462247
+      Cuaderno_2: 8974509135145059547
+      Cuaderno_3: 4073449604240188212
+      Cuaderno_4: -1000459928057372008
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
